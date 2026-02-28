@@ -1,84 +1,41 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Add 10 new wallpaper options to the personalization panel",
+  "title": "Remove wallpapers from 'dark stussy grunge' onward and set 'Cheetah B and W' as default",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Add 10 new wallpaper images as selectable options in PersonalizationPanel and Personalization page alongside existing choices",
+      "summary": "Remove 'dark stussy grunge' wallpaper and all wallpapers that appear after it in the list",
       "acceptanceCriteria": [
-        "All 10 new wallpaper thumbnails appear in the PersonalizationPanel grid alongside existing options",
-        "All 10 new wallpaper thumbnails appear on the Personalization settings page",
-        "Selecting any new wallpaper sets it as the full-page background across the site",
-        "Selected wallpaper persists in localStorage via usePersonalization hook",
-        "All wallpaper image files are placed in frontend/public/assets/generated",
-        "Each option displays a human-readable label matching the descriptions above"
+        "The wallpaper 'dark stussy grunge' no longer appears in the PersonalizationPanel grid.",
+        "All wallpapers that were listed after 'dark stussy grunge' no longer appear in the PersonalizationPanel grid.",
+        "Wallpapers listed before 'dark stussy grunge' remain unchanged."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/wallpaper-white-plaid-lace.dim_1280x720.png",
-          "operation": "create",
-          "description": "Generated image: White diagonal plaid pattern on light grey/white background with black lace trim along the bottom edge and a small black treble clef icon in the upper right corner, sized 1280x720."
-        },
-        {
-          "path": "frontend/public/assets/generated/wallpaper-pink-polka-dot-lace.dim_1280x720.png",
-          "operation": "create",
-          "description": "Generated image: Pale pink background covered in evenly spaced small black polka dots, with wide black floral lace bands along the top and bottom edges, sized 1280x720."
-        },
-        {
-          "path": "frontend/public/assets/generated/wallpaper-leopard-union-jack.dim_1280x720.png",
-          "operation": "create",
-          "description": "Generated image: Black background with a Union Jack flag shape filled entirely with black-and-white snow leopard fur print, sized 1280x720."
-        },
-        {
-          "path": "frontend/public/assets/generated/wallpaper-zebra-quilted.dim_1280x720.png",
-          "operation": "create",
-          "description": "Generated image: Dark brown quilted diamond-pattern leather texture on top and bottom thirds, with a centre band of high-contrast black-and-white zebra print stripes and a silver fleur-de-lis emblem overlaid on the lower left, sized 1280x720."
-        },
-        {
-          "path": "frontend/public/assets/generated/wallpaper-mixed-lace-leopard.dim_1280x720.png",
-          "operation": "create",
-          "description": "Generated image: White background collage blending black floral lace overlay on the left, soft blurred snow leopard fur in the centre, and black baroque scrollwork illustration on the lower right, sized 1280x720."
-        },
-        {
-          "path": "frontend/public/assets/generated/wallpaper-domo-black.dim_1280x720.png",
-          "operation": "create",
-          "description": "Generated image: Pure black background with a white-outlined cartoon Domo-kun character (boxy brown monster with jagged open mouth and round white eyes) standing in the left half, waving one arm, sized 1280x720."
-        },
-        {
-          "path": "frontend/public/assets/generated/wallpaper-silver-wings.dim_1280x720.png",
-          "operation": "create",
-          "description": "Generated image: Pure black background with a pair of large, symmetrical metallic silver feathered angel wings spread wide and centred, rendered with high-detail shiny feathers, sized 1280x720."
-        },
-        {
-          "path": "frontend/public/assets/generated/wallpaper-dark-stussy-grunge.dim_1280x720.png",
-          "operation": "create",
-          "description": "Generated image: Distressed grunge texture combining horizontal paint-smear streaks in black, white, and raw umber with overlapping leopard/cheetah spot prints in dark brown and tan tones, sized 1280x720."
-        },
-        {
-          "path": "frontend/public/assets/generated/wallpaper-dark-cheetah.dim_1280x720.png",
-          "operation": "create",
-          "description": "Generated image: Close-up macro of dark charcoal and black cheetah fur, showing large irregular black spots on a deep grey background with visible fine fur texture, sized 1280x720."
-        },
-        {
-          "path": "frontend/public/assets/generated/wallpaper-black-floral-lace.dim_1280x720.png",
-          "operation": "create",
-          "description": "Generated image: Dense all-over black floral lace pattern — large roses and leaf motifs rendered in black net lace — on an off-white/cream background, sized 1280x720."
-        },
-        {
           "path": "frontend/src/hooks/usePersonalization.ts",
           "operation": "modify",
-          "description": "Add 10 new wallpaper option entries to the wallpaperOptions array with references to the generated images in frontend/public/assets/generated/: wallpaper-white-plaid-lace.dim_1280x720.png (White Plaid with Lace Trim), wallpaper-pink-polka-dot-lace.dim_1280x720.png (Pink Polka Dot with Black Lace Border), wallpaper-leopard-union-jack.dim_1280x720.png (Leopard Union Jack), wallpaper-zebra-quilted.dim_1280x720.png (Zebra Print with Quilted Leather & Fleur-de-lis), wallpaper-mixed-lace-leopard.dim_1280x720.png (Mixed Lace Leopard Scrollwork), wallpaper-domo-black.dim_1280x720.png (Domo Black), wallpaper-silver-wings.dim_1280x720.png (Silver Angel Wings), wallpaper-dark-stussy-grunge.dim_1280x720.png (Dark Stussy Grunge Leopard), wallpaper-dark-cheetah.dim_1280x720.png (Dark Cheetah Fur), wallpaper-black-floral-lace.dim_1280x720.png (Black Floral Lace). Ensure the hook continues to persist user selections in localStorage and that the getBackgroundUrl helper resolves these new image paths correctly."
+          "description": "In the validTextures array, locate the entry for 'dark stussy grunge' and remove it along with every wallpaper entry that follows it in the array. Preserve all wallpaper entries that appear before 'dark stussy grunge' in the original order."
         },
         {
           "path": "frontend/src/components/PersonalizationPanel.tsx",
           "operation": "modify",
-          "description": "Verify the PersonalizationPanel renders all wallpaper options (including the 10 new entries) in a responsive grid, displaying both thumbnail and label for each. Ensure that clicking any new wallpaper option updates the selected background via the usePersonalization hook. No structural changes required if the component already maps over the wallpaperOptions array from the hook."
-        },
+          "description": "In the wallpapers array constant, locate the entry with label 'dark stussy grunge' and remove it along with every wallpaper object that follows it in the array. Keep all wallpaper objects that appear before 'dark stussy grunge' unchanged."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Set 'Cheetah B and W' as the default background wallpaper for new visitors",
+      "acceptanceCriteria": [
+        "When localStorage contains no saved background preference, the app renders with the 'Cheetah B and W' wallpaper active.",
+        "The 'Cheetah B and W' option is highlighted/selected by default in the PersonalizationPanel when no prior selection exists."
+      ],
+      "file_operations": [
         {
-          "path": "frontend/src/pages/Personalization.tsx",
+          "path": "frontend/src/hooks/usePersonalization.ts",
           "operation": "modify",
-          "description": "Verify the Personalization settings page displays all wallpaper options (including the 10 new entries) in a grid with thumbnails and labels. Ensure selection updates the background site-wide via the usePersonalization hook. No structural changes required if the page already maps over the wallpaperOptions array from the hook."
+          "description": "Change the default background value in the useState initialization from its current value to 'cheetah-bw' (or the exact texture key used for 'Cheetah B and W' in the validTextures array). This ensures that when no localStorage preference exists, the hook returns 'Cheetah B and W' as the active background."
         }
       ]
     }

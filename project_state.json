@@ -1,63 +1,31 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "A no-login-required entertainment hub website with three main pages: Games, Movies (500K+), and Music (100M+ songs). Features include no sign-in required, background/wallpaper switcher widget with multiple options, and various widgets per page.",
+  "summary": "Entertainment hub web app with a background switcher widget. User manages wallpaper options and default backgrounds.",
   "architectural_notes": [
-    "Three separate pages: Games, Movies, and Music — each with its own dedicated layout",
-    "No authentication or sign-in required anywhere on the site",
-    "Real content (songs/movies) requires third-party API integrations; build full UI/UX framework and integrate free/open APIs where possible"
+    "Background switcher widget allows visitors to pick wallpapers; wallpapers are ordered in a list with a configurable default."
   ],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- White diagonal plaid pattern on light grey/white background with black lace trim along the bottom edge and a small black treble clef icon in the upper right corner (wallpaper-white-plaid-lace.dim_1280x720.png)\n- Pale pink background covered in evenly spaced small black polka dots, with wide black floral lace bands along the top and bottom edges (wallpaper-pink-polka-dot-lace.dim_1280x720.png)\n- Black background with a Union Jack flag shape filled entirely with black-and-white snow leopard fur print (wallpaper-leopard-union-jack.dim_1280x720.png)\n- Dark brown quilted diamond-pattern leather texture on top and bottom thirds, with a centre band of high-contrast black-and-white zebra print stripes and a silver fleur-de-lis emblem overlaid on the lower left (wallpaper-zebra-quilted.dim_1280x720.png)\n- White background collage blending black floral lace overlay on the left, soft blurred snow leopard fur in the centre, and black baroque scrollwork illustration on the lower right (wallpaper-mixed-lace-leopard.dim_1280x720.png)\n- Pure black background with a white-outlined cartoon Domo-kun character (boxy brown monster with jagged open mouth and round white eyes) standing in the left half, waving one arm (wallpaper-domo-black.dim_1280x720.png)\n- Pure black background with a pair of large, symmetrical metallic silver feathered angel wings spread wide and centred, rendered with high-detail shiny feathers (wallpaper-silver-wings.dim_1280x720.png)\n- Distressed grunge texture combining horizontal paint-smear streaks in black, white, and raw umber with overlapping leopard/cheetah spot prints in dark brown and tan tones (wallpaper-dark-stussy-grunge.dim_1280x720.png)\n- Close-up macro of dark charcoal and black cheetah fur, showing large irregular black spots on a deep grey background with visible fine fur texture (wallpaper-dark-cheetah.dim_1280x720.png)\n- Dense all-over black floral lace pattern — large roses and leaf motifs rendered in black net lace — on an off-white/cream background (wallpaper-black-floral-lace.dim_1280x720.png)",
   "existing_features": [
     {
-      "id": "feature-add-the-following-10-uploaded-images-as-new-selectable-wallpaper-options-in-the-personalizationpanel-and-personalization-page-alongside-the-existing-wallpaper-choices-each-option-should-display-a-thumbnail-and-a-label-the-new-wallpapers-are-1-white-plaid-with-lace-trim-2-pink-polka-dot-with-black-lace-border-3-leopard-union-jack-black-white-4-zebra-print-with-quilted-leather-fleur-de-lis-5-mixed-lace-leopard-scrollwork-6-domo-black-7-silver-angel-wings-8-dark-stussy-grunge-leopard-9-dark-cheetah-fur-10-black-floral-lace-all-images-must-be-served-as-static-assets-from-frontend-public-assets-generated-and-referenced-in-the-usepersonalization-hook-s-wallpaper-list",
-      "title": "Add the following 10 uploaded images as new selectable wallpaper options in the PersonalizationPanel and Personalization page, alongside the existing wallpaper choices. Each option should display a thumbnail and a label. The new wallpapers are: (1) White Plaid with Lace Trim, (2) Pink Polka Dot with Black Lace Border, (3) Leopard Union Jack (black & white), (4) Zebra Print with Quilted Leather & Fleur-de-lis, (5) Mixed Lace Leopard Scrollwork, (6) Domo Black, (7) Silver Angel Wings, (8) Dark Stussy Grunge Leopard, (9) Dark Cheetah Fur, (10) Black Floral Lace. All images must be served as static assets from frontend/public/assets/generated and referenced in the usePersonalization hook's wallpaper list.",
+      "id": "feature-in-the-wallpaper-list-defined-in-usepersonalization-ts-and-personalizationpanel-tsx-find-the-entry-named-dark-stussy-grunge-remove-it-and-remove-every-wallpaper-entry-that-appears-after-it-in-the-list",
+      "title": "In the wallpaper list defined in usePersonalization.ts and PersonalizationPanel.tsx, find the entry named 'dark stussy grunge', remove it, and remove every wallpaper entry that appears after it in the list.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-set-cheetah-b-and-w-as-the-default-background-in-usepersonalization-ts-so-that-new-visitors-with-no-localstorage-preference-saved-see-the-cheetah-b-and-w-wallpaper-applied-on-first-load",
+      "title": "Set 'Cheetah B and W' as the default background in usePersonalization.ts so that new visitors (with no localStorage preference saved) see the 'Cheetah B and W' wallpaper applied on first load.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
     }
   ],
-  "new_feature_requests": [
-    {
-      "id": "AR-1",
-      "summary": "Games page with a large collection of playable games",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-2",
-      "summary": "Movies page with 500,000+ movies to watch",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-3",
-      "summary": "Music page with 100 million+ songs to listen to",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-4",
-      "summary": "No login/sign-in required for the website",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-5",
-      "summary": "Background/wallpaper switcher widget with multiple themed options (plaid with lace, pink polka dot with lace, leopard Union Jack, zebra print, mixed lace/leopard/scrollwork, plus new wallpapers from latest message)",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-6",
-      "summary": "Widgets on each page (e.g., now-playing for music, currently watching for movies)",
-      "reqIds": [],
-      "status": "pending"
-    }
-  ],
+  "new_feature_requests": [],
   "gameProjectType": "none",
   "projectName": "Entertainment Hub",
   "clarification_mode": "instant",

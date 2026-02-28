@@ -1,48 +1,37 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-28T22:06:22.287Z",
+  "generatedAt": "2026-02-28T22:17:14.869Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 1,
-    "implemented": 1,
+    "total": 2,
+    "implemented": 2,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Add the following 10 uploaded images as new selectable wallpaper options in the PersonalizationPanel and Personalization page, alongside the existing wallpaper choices. Each option should display a thumbnail and a label. The new wallpapers are: (1) White Plaid with Lace Trim, (2) Pink Polka Dot with Black Lace Border, (3) Leopard Union Jack (black & white), (4) Zebra Print with Quilted Leather & Fleur-de-lis, (5) Mixed Lace Leopard Scrollwork, (6) Domo Black, (7) Silver Angel Wings, (8) Dark Stussy Grunge Leopard, (9) Dark Cheetah Fur, (10) Black Floral Lace. All images must be served as static assets from frontend/public/assets/generated and referenced in the usePersonalization hook's wallpaper list.",
+        "summary": "In the wallpaper list defined in usePersonalization.ts and PersonalizationPanel.tsx, find the entry named 'dark stussy grunge', remove it, and remove every wallpaper entry that appears after it in the list.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/public/assets/generated/wallpaper-white-plaid-lace.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-pink-polka-dot-lace.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-leopard-union-jack.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-zebra-quilted.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-mixed-lace-leopard.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-domo-black.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-silver-wings.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-dark-stussy-grunge.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-dark-cheetah.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-black-floral-lace.dim_1280x720.png",
           "frontend/src/hooks/usePersonalization.ts",
-          "frontend/src/components/PersonalizationPanel.tsx",
-          "frontend/src/pages/Personalization.tsx"
+          "frontend/src/components/PersonalizationPanel.tsx"
         ],
         "matchedFiles": [
-          "frontend/public/assets/generated/wallpaper-white-plaid-lace.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-pink-polka-dot-lace.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-leopard-union-jack.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-zebra-quilted.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-mixed-lace-leopard.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-domo-black.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-silver-wings.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-dark-stussy-grunge.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-dark-cheetah.dim_1280x720.png",
-          "frontend/public/assets/generated/wallpaper-black-floral-lace.dim_1280x720.png",
           "frontend/src/hooks/usePersonalization.ts",
-          "frontend/src/components/PersonalizationPanel.tsx",
-          "frontend/src/pages/Personalization.tsx"
+          "frontend/src/components/PersonalizationPanel.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Set 'Cheetah B and W' as the default background in usePersonalization.ts so that new visitors (with no localStorage preference saved) see the 'Cheetah B and W' wallpaper applied on first load.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/usePersonalization.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/usePersonalization.ts"
         ]
       }
     ]
@@ -52,16 +41,6 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/assets/generated/wallpaper-black-floral-lace.dim_1280x720.png",
-    "frontend/public/assets/generated/wallpaper-dark-cheetah.dim_1280x720.png",
-    "frontend/public/assets/generated/wallpaper-dark-stussy-grunge.dim_1280x720.png",
-    "frontend/public/assets/generated/wallpaper-domo-black.dim_1280x720.png",
-    "frontend/public/assets/generated/wallpaper-leopard-union-jack.dim_1280x720.png",
-    "frontend/public/assets/generated/wallpaper-mixed-lace-leopard.dim_1280x720.png",
-    "frontend/public/assets/generated/wallpaper-pink-polka-dot-lace.dim_1280x720.png",
-    "frontend/public/assets/generated/wallpaper-silver-wings.dim_1280x720.png",
-    "frontend/public/assets/generated/wallpaper-white-plaid-lace.dim_1280x720.png",
-    "frontend/public/assets/generated/wallpaper-zebra-quilted.dim_1280x720.png",
     "frontend/src/components/PersonalizationPanel.tsx",
     "frontend/src/hooks/usePersonalization.ts",
     "frontend/src/pages/Personalization.tsx",

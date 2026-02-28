@@ -1,53 +1,57 @@
 {
   "kind": "build_request",
-  "title": "Add 10 new wallpaper options to the personalization panel",
-  "projectName": "KitschHub",
+  "title": "Remove wallpapers from 'dark stussy grunge' onward and set 'Cheetah B and W' as default",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Add the following 10 uploaded images as new selectable wallpaper options in the PersonalizationPanel and Personalization page, alongside the existing wallpaper choices. Each option should display a thumbnail and a label. The new wallpapers are: (1) White Plaid with Lace Trim, (2) Pink Polka Dot with Black Lace Border, (3) Leopard Union Jack (black & white), (4) Zebra Print with Quilted Leather & Fleur-de-lis, (5) Mixed Lace Leopard Scrollwork, (6) Domo Black, (7) Silver Angel Wings, (8) Dark Stussy Grunge Leopard, (9) Dark Cheetah Fur, (10) Black Floral Lace. All images must be served as static assets from frontend/public/assets/generated and referenced in the usePersonalization hook's wallpaper list.",
+      "text": "In the wallpaper list defined in usePersonalization.ts and PersonalizationPanel.tsx, find the entry named 'dark stussy grunge', remove it, and remove every wallpaper entry that appears after it in the list.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-last"
+          "msg-4",
+          "msg-5"
         ],
         "quotes": [
-          "For last add these wallpaper options"
+          "delete any wallpaper from dark stussy grunge",
+          "delete it along with every wallpaper that comes after it in the list"
         ]
       },
       "acceptanceCriteria": [
-        "All 10 new wallpaper thumbnails appear in the PersonalizationPanel grid alongside existing options",
-        "All 10 new wallpaper thumbnails appear on the Personalization settings page",
-        "Selecting any new wallpaper sets it as the full-page background across the site",
-        "Selected wallpaper persists in localStorage via usePersonalization hook",
-        "All wallpaper image files are placed in frontend/public/assets/generated",
-        "Each option displays a human-readable label matching the descriptions above"
+        "The wallpaper 'dark stussy grunge' no longer appears in the PersonalizationPanel grid.",
+        "All wallpapers that were listed after 'dark stussy grunge' no longer appear in the PersonalizationPanel grid.",
+        "Wallpapers listed before 'dark stussy grunge' remain unchanged."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Set 'Cheetah B and W' as the default background in usePersonalization.ts so that new visitors (with no localStorage preference saved) see the 'Cheetah B and W' wallpaper applied on first load.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "make the default background cheetah B and W"
+        ]
+      },
+      "acceptanceCriteria": [
+        "When localStorage contains no saved background preference, the app renders with the 'Cheetah B and W' wallpaper active.",
+        "The 'Cheetah B and W' option is highlighted/selected by default in the PersonalizationPanel when no prior selection exists."
       ]
     }
   ],
   "constraints": [
-    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui",
-    "Wallpaper images must be served as static assets from frontend/public/assets/generated — do not route through the backend"
+    "Do not remove any wallpapers that appear before 'dark stussy grunge' in the list.",
+    "Do not alter the backend schema or any Motoko files."
   ],
   "nonGoals": [
-    "Removing or modifying any existing wallpaper options",
-    "Changes to the backend",
-    "Adding new pages or navigation items"
+    "Adding new wallpaper options.",
+    "Changing the UI layout of the PersonalizationPanel.",
+    "Modifying any other personalization settings (e.g., overlay opacity)."
   ],
   "imageRequirements": {
-    "required": [
-      "White diagonal plaid pattern on light grey/white background with black lace trim along the bottom edge and a small black treble clef icon in the upper right corner (wallpaper-white-plaid-lace.dim_1280x720.png)",
-      "Pale pink background covered in evenly spaced small black polka dots, with wide black floral lace bands along the top and bottom edges (wallpaper-pink-polka-dot-lace.dim_1280x720.png)",
-      "Black background with a Union Jack flag shape filled entirely with black-and-white snow leopard fur print (wallpaper-leopard-union-jack.dim_1280x720.png)",
-      "Dark brown quilted diamond-pattern leather texture on top and bottom thirds, with a centre band of high-contrast black-and-white zebra print stripes and a silver fleur-de-lis emblem overlaid on the lower left (wallpaper-zebra-quilted.dim_1280x720.png)",
-      "White background collage blending black floral lace overlay on the left, soft blurred snow leopard fur in the centre, and black baroque scrollwork illustration on the lower right (wallpaper-mixed-lace-leopard.dim_1280x720.png)",
-      "Pure black background with a white-outlined cartoon Domo-kun character (boxy brown monster with jagged open mouth and round white eyes) standing in the left half, waving one arm (wallpaper-domo-black.dim_1280x720.png)",
-      "Pure black background with a pair of large, symmetrical metallic silver feathered angel wings spread wide and centred, rendered with high-detail shiny feathers (wallpaper-silver-wings.dim_1280x720.png)",
-      "Distressed grunge texture combining horizontal paint-smear streaks in black, white, and raw umber with overlapping leopard/cheetah spot prints in dark brown and tan tones (wallpaper-dark-stussy-grunge.dim_1280x720.png)",
-      "Close-up macro of dark charcoal and black cheetah fur, showing large irregular black spots on a deep grey background with visible fine fur texture (wallpaper-dark-cheetah.dim_1280x720.png)",
-      "Dense all-over black floral lace pattern — large roses and leaf motifs rendered in black net lace — on an off-white/cream background (wallpaper-black-floral-lace.dim_1280x720.png)"
-    ],
+    "required": [],
     "edits": []
   }
 }

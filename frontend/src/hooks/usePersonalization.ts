@@ -10,17 +10,6 @@ export type BackgroundTexture =
   | 'wallpaper-lace'
   | 'leopard-union-jack'
   | 'white-plaid-lace'
-  | 'dark-stussy-grunge'
-  | 'wallpaper-white-plaid-lace'
-  | 'wallpaper-pink-polka-dot-lace'
-  | 'wallpaper-leopard-union-jack'
-  | 'wallpaper-zebra-quilted'
-  | 'wallpaper-mixed-lace-leopard'
-  | 'wallpaper-domo-black'
-  | 'wallpaper-silver-wings'
-  | 'wallpaper-dark-stussy-grunge'
-  | 'wallpaper-dark-cheetah'
-  | 'wallpaper-black-floral-lace'
   | 'none';
 
 export interface PersonalizationSettings {
@@ -31,7 +20,7 @@ export interface PersonalizationSettings {
 const STORAGE_KEY = 'kitsch_personalization';
 
 const defaultSettings: PersonalizationSettings = {
-  selectedTexture: 'studded-cross',
+  selectedTexture: 'wallpaper-cheetah-bw',
   overlayOpacity: 0.55,
 };
 
@@ -45,17 +34,6 @@ const ALL_VALID_TEXTURES: BackgroundTexture[] = [
   'wallpaper-lace',
   'leopard-union-jack',
   'white-plaid-lace',
-  'dark-stussy-grunge',
-  'wallpaper-white-plaid-lace',
-  'wallpaper-pink-polka-dot-lace',
-  'wallpaper-leopard-union-jack',
-  'wallpaper-zebra-quilted',
-  'wallpaper-mixed-lace-leopard',
-  'wallpaper-domo-black',
-  'wallpaper-silver-wings',
-  'wallpaper-dark-stussy-grunge',
-  'wallpaper-dark-cheetah',
-  'wallpaper-black-floral-lace',
   'none',
 ];
 
@@ -112,29 +90,6 @@ export function usePersonalization() {
         return '/assets/generated/leopard-union-jack.dim_1280x720.jpg';
       case 'white-plaid-lace':
         return '/assets/generated/white-plaid-lace.dim_1280x720.jpg';
-      case 'dark-stussy-grunge':
-        return '/assets/generated/dark-stussy-grunge.dim_1280x720.jpg';
-      // New wallpapers
-      case 'wallpaper-white-plaid-lace':
-        return '/assets/generated/wallpaper-white-plaid-lace.dim_1280x720.png';
-      case 'wallpaper-pink-polka-dot-lace':
-        return '/assets/generated/wallpaper-pink-polka-dot-lace.dim_1280x720.png';
-      case 'wallpaper-leopard-union-jack':
-        return '/assets/generated/wallpaper-leopard-union-jack.dim_1280x720.png';
-      case 'wallpaper-zebra-quilted':
-        return '/assets/generated/wallpaper-zebra-quilted.dim_1280x720.png';
-      case 'wallpaper-mixed-lace-leopard':
-        return '/assets/generated/wallpaper-mixed-lace-leopard.dim_1280x720.png';
-      case 'wallpaper-domo-black':
-        return '/assets/generated/wallpaper-domo-black.dim_1280x720.png';
-      case 'wallpaper-silver-wings':
-        return '/assets/generated/wallpaper-silver-wings.dim_1280x720.png';
-      case 'wallpaper-dark-stussy-grunge':
-        return '/assets/generated/wallpaper-dark-stussy-grunge.dim_1280x720.png';
-      case 'wallpaper-dark-cheetah':
-        return '/assets/generated/wallpaper-dark-cheetah.dim_1280x720.png';
-      case 'wallpaper-black-floral-lace':
-        return '/assets/generated/wallpaper-black-floral-lace.dim_1280x720.png';
       default:
         return null;
     }

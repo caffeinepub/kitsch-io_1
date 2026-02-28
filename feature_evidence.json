@@ -2,12 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-the-following-10-uploaded-images-as-new-selectable-wallpaper-options-in-the-personalizationpanel-and-personalization-page-alongside-the-existing-wallpaper-choices-each-option-should-display-a-thumbnail-and-a-label-the-new-wallpapers-are-1-white-plaid-with-lace-trim-2-pink-polka-dot-with-black-lace-border-3-leopard-union-jack-black-white-4-zebra-print-with-quilted-leather-fleur-de-lis-5-mixed-lace-leopard-scrollwork-6-domo-black-7-silver-angel-wings-8-dark-stussy-grunge-leopard-9-dark-cheetah-fur-10-black-floral-lace-all-images-must-be-served-as-static-assets-from-frontend-public-assets-generated-and-referenced-in-the-usepersonalization-hook-s-wallpaper-list",
-      "featureTitle": "Add the following 10 uploaded images as new selectable wallpaper options in the PersonalizationPanel and Personalization page, alongside the existing wallpaper choices. Each option should display a thumbnail and a label. The new wallpapers are: (1) White Plaid with Lace Trim, (2) Pink Polka Dot with Black Lace Border, (3) Leopard Union Jack (black & white), (4) Zebra Print with Quilted Leather & Fleur-de-lis, (5) Mixed Lace Leopard Scrollwork, (6) Domo Black, (7) Silver Angel Wings, (8) Dark Stussy Grunge Leopard, (9) Dark Cheetah Fur, (10) Black Floral Lace. All images must be served as static assets from frontend/public/assets/generated and referenced in the usePersonalization hook's wallpaper list.",
+      "featureId": "feature-in-the-wallpaper-list-defined-in-usepersonalization-ts-and-personalizationpanel-tsx-find-the-entry-named-dark-stussy-grunge-remove-it-and-remove-every-wallpaper-entry-that-appears-after-it-in-the-list",
+      "featureTitle": "In the wallpaper list defined in usePersonalization.ts and PersonalizationPanel.tsx, find the entry named 'dark stussy grunge', remove it, and remove every wallpaper entry that appears after it in the list.",
       "files": [
         "frontend/src/components/PersonalizationPanel.tsx",
-        "frontend/src/hooks/usePersonalization.ts",
-        "frontend/src/pages/Personalization.tsx"
+        "frontend/src/hooks/usePersonalization.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -18,6 +17,24 @@
       ],
       "testIds": [
         "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-set-cheetah-b-and-w-as-the-default-background-in-usepersonalization-ts-so-that-new-visitors-with-no-localstorage-preference-saved-see-the-cheetah-b-and-w-wallpaper-applied-on-first-load",
+      "featureTitle": "Set 'Cheetah B and W' as the default background in usePersonalization.ts so that new visitors (with no localStorage preference saved) see the 'Cheetah B and W' wallpaper applied on first load.",
+      "files": [
+        "frontend/src/hooks/usePersonalization.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
       ],
       "confidence": "high"
     }
