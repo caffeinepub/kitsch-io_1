@@ -1,71 +1,84 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Add White Plaid Lace and Dark Stussy Grunge wallpapers to collection",
+  "title": "Add 10 new wallpaper options to the personalization panel",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Add 'whitePlaidLace' and 'darkStussyGrunge' texture keys to usePersonalization hook's texture options map",
+      "summary": "Add 10 new wallpaper images as selectable options in PersonalizationPanel and Personalization page alongside existing choices",
       "acceptanceCriteria": [
-        "usePersonalization hook includes 'whitePlaidLace' and 'darkStussyGrunge' as valid texture keys",
-        "Each key maps to the correct asset path under frontend/public/assets/generated"
+        "All 10 new wallpaper thumbnails appear in the PersonalizationPanel grid alongside existing options",
+        "All 10 new wallpaper thumbnails appear on the Personalization settings page",
+        "Selecting any new wallpaper sets it as the full-page background across the site",
+        "Selected wallpaper persists in localStorage via usePersonalization hook",
+        "All wallpaper image files are placed in frontend/public/assets/generated",
+        "Each option displays a human-readable label matching the descriptions above"
       ],
       "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/wallpaper-white-plaid-lace.dim_1280x720.png",
+          "operation": "create",
+          "description": "Generated image: White diagonal plaid pattern on light grey/white background with black lace trim along the bottom edge and a small black treble clef icon in the upper right corner, sized 1280x720."
+        },
+        {
+          "path": "frontend/public/assets/generated/wallpaper-pink-polka-dot-lace.dim_1280x720.png",
+          "operation": "create",
+          "description": "Generated image: Pale pink background covered in evenly spaced small black polka dots, with wide black floral lace bands along the top and bottom edges, sized 1280x720."
+        },
+        {
+          "path": "frontend/public/assets/generated/wallpaper-leopard-union-jack.dim_1280x720.png",
+          "operation": "create",
+          "description": "Generated image: Black background with a Union Jack flag shape filled entirely with black-and-white snow leopard fur print, sized 1280x720."
+        },
+        {
+          "path": "frontend/public/assets/generated/wallpaper-zebra-quilted.dim_1280x720.png",
+          "operation": "create",
+          "description": "Generated image: Dark brown quilted diamond-pattern leather texture on top and bottom thirds, with a centre band of high-contrast black-and-white zebra print stripes and a silver fleur-de-lis emblem overlaid on the lower left, sized 1280x720."
+        },
+        {
+          "path": "frontend/public/assets/generated/wallpaper-mixed-lace-leopard.dim_1280x720.png",
+          "operation": "create",
+          "description": "Generated image: White background collage blending black floral lace overlay on the left, soft blurred snow leopard fur in the centre, and black baroque scrollwork illustration on the lower right, sized 1280x720."
+        },
+        {
+          "path": "frontend/public/assets/generated/wallpaper-domo-black.dim_1280x720.png",
+          "operation": "create",
+          "description": "Generated image: Pure black background with a white-outlined cartoon Domo-kun character (boxy brown monster with jagged open mouth and round white eyes) standing in the left half, waving one arm, sized 1280x720."
+        },
+        {
+          "path": "frontend/public/assets/generated/wallpaper-silver-wings.dim_1280x720.png",
+          "operation": "create",
+          "description": "Generated image: Pure black background with a pair of large, symmetrical metallic silver feathered angel wings spread wide and centred, rendered with high-detail shiny feathers, sized 1280x720."
+        },
+        {
+          "path": "frontend/public/assets/generated/wallpaper-dark-stussy-grunge.dim_1280x720.png",
+          "operation": "create",
+          "description": "Generated image: Distressed grunge texture combining horizontal paint-smear streaks in black, white, and raw umber with overlapping leopard/cheetah spot prints in dark brown and tan tones, sized 1280x720."
+        },
+        {
+          "path": "frontend/public/assets/generated/wallpaper-dark-cheetah.dim_1280x720.png",
+          "operation": "create",
+          "description": "Generated image: Close-up macro of dark charcoal and black cheetah fur, showing large irregular black spots on a deep grey background with visible fine fur texture, sized 1280x720."
+        },
+        {
+          "path": "frontend/public/assets/generated/wallpaper-black-floral-lace.dim_1280x720.png",
+          "operation": "create",
+          "description": "Generated image: Dense all-over black floral lace pattern — large roses and leaf motifs rendered in black net lace — on an off-white/cream background, sized 1280x720."
+        },
         {
           "path": "frontend/src/hooks/usePersonalization.ts",
           "operation": "modify",
-          "description": "Add two new entries to the texture options map: 'whitePlaidLace' pointing to '/assets/generated/white-plaid-lace.dim_1280x720.jpg' and 'darkStussyGrunge' pointing to '/assets/generated/dark-stussy-grunge.dim_1280x720.jpg', maintaining consistency with existing texture key naming and URL format"
-        }
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "summary": "Add White Plaid Lace and Dark Stussy Grunge thumbnail options to PersonalizationPanel component",
-      "acceptanceCriteria": [
-        "PersonalizationPanel displays thumbnails for both new wallpapers",
-        "Selecting either new wallpaper applies it as the app background",
-        "Layout remains a 4-column grid consistent with existing options"
-      ],
-      "file_operations": [
+          "description": "Add 10 new wallpaper option entries to the wallpaperOptions array with references to the generated images in frontend/public/assets/generated/: wallpaper-white-plaid-lace.dim_1280x720.png (White Plaid with Lace Trim), wallpaper-pink-polka-dot-lace.dim_1280x720.png (Pink Polka Dot with Black Lace Border), wallpaper-leopard-union-jack.dim_1280x720.png (Leopard Union Jack), wallpaper-zebra-quilted.dim_1280x720.png (Zebra Print with Quilted Leather & Fleur-de-lis), wallpaper-mixed-lace-leopard.dim_1280x720.png (Mixed Lace Leopard Scrollwork), wallpaper-domo-black.dim_1280x720.png (Domo Black), wallpaper-silver-wings.dim_1280x720.png (Silver Angel Wings), wallpaper-dark-stussy-grunge.dim_1280x720.png (Dark Stussy Grunge Leopard), wallpaper-dark-cheetah.dim_1280x720.png (Dark Cheetah Fur), wallpaper-black-floral-lace.dim_1280x720.png (Black Floral Lace). Ensure the hook continues to persist user selections in localStorage and that the getBackgroundUrl helper resolves these new image paths correctly."
+        },
         {
           "path": "frontend/src/components/PersonalizationPanel.tsx",
           "operation": "modify",
-          "description": "Add two new wallpaper thumbnail buttons in the grid: one for 'whitePlaidLace' using frontend/public/assets/generated/white-plaid-lace.dim_1280x720.jpg and one for 'darkStussyGrunge' using frontend/public/assets/generated/dark-stussy-grunge.dim_1280x720.jpg, positioned after the existing 8 wallpaper options and maintaining the 4-column responsive grid layout with proper onClick handlers to set the texture"
-        }
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "summary": "Add White Plaid Lace and Dark Stussy Grunge selectable options to Personalization page",
-      "acceptanceCriteria": [
-        "Personalization page shows both new wallpaper thumbnails",
-        "Selecting them updates the persisted background preference"
-      ],
-      "file_operations": [
+          "description": "Verify the PersonalizationPanel renders all wallpaper options (including the 10 new entries) in a responsive grid, displaying both thumbnail and label for each. Ensure that clicking any new wallpaper option updates the selected background via the usePersonalization hook. No structural changes required if the component already maps over the wallpaperOptions array from the hook."
+        },
         {
           "path": "frontend/src/pages/Personalization.tsx",
           "operation": "modify",
-          "description": "Add two new wallpaper thumbnail buttons to the texture selection grid: one for 'whitePlaidLace' using frontend/public/assets/generated/white-plaid-lace.dim_1280x720.jpg and one for 'darkStussyGrunge' using frontend/public/assets/generated/dark-stussy-grunge.dim_1280x720.jpg, positioned after the existing 8 options and maintaining consistent thumbnail styling with active state indicators and onClick handlers"
-        }
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "summary": "Wire generated wallpaper images as static frontend assets",
-      "acceptanceCriteria": [
-        "Both image files exist under frontend/public/assets/generated",
-        "Images load correctly when applied as background in the app"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/public/assets/generated/white-plaid-lace.dim_1280x720.jpg",
-          "operation": "create",
-          "description": "Place the generated white plaid lace wallpaper image (light gray diagonal plaid pattern with black lace trim along the bottom edge, clean and delicate textile aesthetic) as a static asset at this path so it can be referenced by the personalization hook and components"
-        },
-        {
-          "path": "frontend/public/assets/generated/dark-stussy-grunge.dim_1280x720.jpg",
-          "operation": "create",
-          "description": "Place the generated dark Stussy grunge wallpaper image (high-contrast black background with large off-white Stussy graffiti-style logo text on the left and a close-up of bared teeth on the right, grungy streetwear aesthetic) as a static asset at this path so it can be referenced by the personalization hook and components"
+          "description": "Verify the Personalization settings page displays all wallpaper options (including the 10 new entries) in a grid with thumbnails and labels. Ensure selection updates the background site-wide via the usePersonalization hook. No structural changes required if the page already maps over the wallpaperOptions array from the hook."
         }
       ]
     }

@@ -1,59 +1,48 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-28T21:05:37.013Z",
+  "generatedAt": "2026-02-28T22:06:22.287Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 4,
-    "implemented": 4,
+    "total": 1,
+    "implemented": 1,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Add two new wallpaper options — 'White Plaid Lace' and 'Dark Stussy Grunge' — to the usePersonalization hook's texture options map, pointing to their respective generated image assets in frontend/public/assets/generated.",
+        "summary": "Add the following 10 uploaded images as new selectable wallpaper options in the PersonalizationPanel and Personalization page, alongside the existing wallpaper choices. Each option should display a thumbnail and a label. The new wallpapers are: (1) White Plaid with Lace Trim, (2) Pink Polka Dot with Black Lace Border, (3) Leopard Union Jack (black & white), (4) Zebra Print with Quilted Leather & Fleur-de-lis, (5) Mixed Lace Leopard Scrollwork, (6) Domo Black, (7) Silver Angel Wings, (8) Dark Stussy Grunge Leopard, (9) Dark Cheetah Fur, (10) Black Floral Lace. All images must be served as static assets from frontend/public/assets/generated and referenced in the usePersonalization hook's wallpaper list.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/hooks/usePersonalization.ts"
-        ],
-        "matchedFiles": [
-          "frontend/src/hooks/usePersonalization.ts"
-        ]
-      },
-      {
-        "id": "REQ-2",
-        "summary": "Add 'White Plaid Lace' and 'Dark Stussy Grunge' as selectable thumbnail options in the PersonalizationPanel component alongside the existing wallpaper thumbnails, maintaining the existing 4-column grid layout.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/PersonalizationPanel.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/PersonalizationPanel.tsx"
-        ]
-      },
-      {
-        "id": "REQ-3",
-        "summary": "Add 'White Plaid Lace' and 'Dark Stussy Grunge' as selectable options in the Personalization page (frontend/src/pages/Personalization.tsx), displaying their thumbnails in the existing grid alongside current options.",
-        "status": "implemented",
-        "plannedFiles": [
+          "frontend/public/assets/generated/wallpaper-white-plaid-lace.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-pink-polka-dot-lace.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-leopard-union-jack.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-zebra-quilted.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-mixed-lace-leopard.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-domo-black.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-silver-wings.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-dark-stussy-grunge.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-dark-cheetah.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-black-floral-lace.dim_1280x720.png",
+          "frontend/src/hooks/usePersonalization.ts",
+          "frontend/src/components/PersonalizationPanel.tsx",
           "frontend/src/pages/Personalization.tsx"
         ],
         "matchedFiles": [
+          "frontend/public/assets/generated/wallpaper-white-plaid-lace.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-pink-polka-dot-lace.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-leopard-union-jack.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-zebra-quilted.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-mixed-lace-leopard.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-domo-black.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-silver-wings.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-dark-stussy-grunge.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-dark-cheetah.dim_1280x720.png",
+          "frontend/public/assets/generated/wallpaper-black-floral-lace.dim_1280x720.png",
+          "frontend/src/hooks/usePersonalization.ts",
+          "frontend/src/components/PersonalizationPanel.tsx",
           "frontend/src/pages/Personalization.tsx"
-        ]
-      },
-      {
-        "id": "REQ-4",
-        "summary": "Render the generated wallpaper images (white-plaid-lace.dim_1280x720.jpg and dark-stussy-grunge.dim_1280x720.jpg) as static assets placed in frontend/public/assets/generated so they can be referenced by the personalization hook and components.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/public/assets/generated/white-plaid-lace.dim_1280x720.jpg",
-          "frontend/public/assets/generated/dark-stussy-grunge.dim_1280x720.jpg"
-        ],
-        "matchedFiles": [
-          "frontend/public/assets/generated/white-plaid-lace.dim_1280x720.jpg",
-          "frontend/public/assets/generated/dark-stussy-grunge.dim_1280x720.jpg"
         ]
       }
     ]
@@ -63,8 +52,16 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/assets/generated/dark-stussy-grunge.dim_1280x720.jpg",
-    "frontend/public/assets/generated/white-plaid-lace.dim_1280x720.jpg",
+    "frontend/public/assets/generated/wallpaper-black-floral-lace.dim_1280x720.png",
+    "frontend/public/assets/generated/wallpaper-dark-cheetah.dim_1280x720.png",
+    "frontend/public/assets/generated/wallpaper-dark-stussy-grunge.dim_1280x720.png",
+    "frontend/public/assets/generated/wallpaper-domo-black.dim_1280x720.png",
+    "frontend/public/assets/generated/wallpaper-leopard-union-jack.dim_1280x720.png",
+    "frontend/public/assets/generated/wallpaper-mixed-lace-leopard.dim_1280x720.png",
+    "frontend/public/assets/generated/wallpaper-pink-polka-dot-lace.dim_1280x720.png",
+    "frontend/public/assets/generated/wallpaper-silver-wings.dim_1280x720.png",
+    "frontend/public/assets/generated/wallpaper-white-plaid-lace.dim_1280x720.png",
+    "frontend/public/assets/generated/wallpaper-zebra-quilted.dim_1280x720.png",
     "frontend/src/components/PersonalizationPanel.tsx",
     "frontend/src/hooks/usePersonalization.ts",
     "frontend/src/pages/Personalization.tsx",

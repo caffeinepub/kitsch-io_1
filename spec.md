@@ -1,12 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Add two new wallpaper options — "White Plaid Lace" and "Dark Stussy Grunge" — to the KitschHub personalization system.
+**Goal:** Add 10 new wallpaper options to the KitschHub personalization panel and settings page.
 
 **Planned changes:**
-- Add `whitePlaidLace` and `darkStussyGrunge` keys to the `usePersonalization` hook's texture options map, pointing to their asset paths in `frontend/public/assets/generated`
-- Add thumbnail options for both new wallpapers in the `PersonalizationPanel` component, maintaining the existing 4-column grid layout
-- Add both new wallpaper thumbnails to the Personalization page so selecting them persists the background preference
-- Place the two new wallpaper image assets (`white-plaid-lace.dim_1280x720.jpg` and `dark-stussy-grunge.dim_1280x720.jpg`) in `frontend/public/assets/generated`
+- Add 10 new wallpaper image files to `frontend/public/assets/generated`
+- Register all 10 new wallpapers in the `usePersonalization` hook's wallpaper list, each with a label and thumbnail reference
+- Display all 10 new wallpaper thumbnails alongside existing options in the PersonalizationPanel grid and Personalization settings page
+- Selecting any new wallpaper sets it as the full-page background and persists the choice in localStorage
 
-**User-visible outcome:** Users can select "White Plaid Lace" or "Dark Stussy Grunge" as their app background from the Personalization panel and page, alongside all existing wallpaper options.
+**User-visible outcome:** Users can choose from 10 additional wallpapers — White Plaid with Lace Trim, Pink Polka Dot with Black Lace Border, Leopard Union Jack, Zebra Print with Quilted Leather & Fleur-de-lis, Mixed Lace Leopard Scrollwork, Domo Black, Silver Angel Wings, Dark Stussy Grunge Leopard, Dark Cheetah Fur, and Black Floral Lace — in the personalization panel and settings page.

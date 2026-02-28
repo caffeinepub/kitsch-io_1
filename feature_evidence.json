@@ -2,45 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-two-new-wallpaper-options-white-plaid-lace-and-dark-stussy-grunge-to-the-usepersonalization-hook-s-texture-options-map-pointing-to-their-respective-generated-image-assets-in-frontend-public-assets-generated",
-      "featureTitle": "Add two new wallpaper options — 'White Plaid Lace' and 'Dark Stussy Grunge' — to the usePersonalization hook's texture options map, pointing to their respective generated image assets in frontend/public/assets/generated.",
+      "featureId": "feature-add-the-following-10-uploaded-images-as-new-selectable-wallpaper-options-in-the-personalizationpanel-and-personalization-page-alongside-the-existing-wallpaper-choices-each-option-should-display-a-thumbnail-and-a-label-the-new-wallpapers-are-1-white-plaid-with-lace-trim-2-pink-polka-dot-with-black-lace-border-3-leopard-union-jack-black-white-4-zebra-print-with-quilted-leather-fleur-de-lis-5-mixed-lace-leopard-scrollwork-6-domo-black-7-silver-angel-wings-8-dark-stussy-grunge-leopard-9-dark-cheetah-fur-10-black-floral-lace-all-images-must-be-served-as-static-assets-from-frontend-public-assets-generated-and-referenced-in-the-usepersonalization-hook-s-wallpaper-list",
+      "featureTitle": "Add the following 10 uploaded images as new selectable wallpaper options in the PersonalizationPanel and Personalization page, alongside the existing wallpaper choices. Each option should display a thumbnail and a label. The new wallpapers are: (1) White Plaid with Lace Trim, (2) Pink Polka Dot with Black Lace Border, (3) Leopard Union Jack (black & white), (4) Zebra Print with Quilted Leather & Fleur-de-lis, (5) Mixed Lace Leopard Scrollwork, (6) Domo Black, (7) Silver Angel Wings, (8) Dark Stussy Grunge Leopard, (9) Dark Cheetah Fur, (10) Black Floral Lace. All images must be served as static assets from frontend/public/assets/generated and referenced in the usePersonalization hook's wallpaper list.",
       "files": [
-        "frontend/src/hooks/usePersonalization.ts"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-1"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-white-plaid-lace-and-dark-stussy-grunge-as-selectable-thumbnail-options-in-the-personalizationpanel-component-alongside-the-existing-wallpaper-thumbnails-maintaining-the-existing-4-column-grid-layout",
-      "featureTitle": "Add 'White Plaid Lace' and 'Dark Stussy Grunge' as selectable thumbnail options in the PersonalizationPanel component alongside the existing wallpaper thumbnails, maintaining the existing 4-column grid layout.",
-      "files": [
-        "frontend/src/components/PersonalizationPanel.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-2"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-white-plaid-lace-and-dark-stussy-grunge-as-selectable-options-in-the-personalization-page-frontend-src-pages-personalization-tsx-displaying-their-thumbnails-in-the-existing-grid-alongside-current-options",
-      "featureTitle": "Add 'White Plaid Lace' and 'Dark Stussy Grunge' as selectable options in the Personalization page (frontend/src/pages/Personalization.tsx), displaying their thumbnails in the existing grid alongside current options.",
-      "files": [
+        "frontend/src/components/PersonalizationPanel.tsx",
+        "frontend/src/hooks/usePersonalization.ts",
         "frontend/src/pages/Personalization.tsx"
       ],
       "components": [
@@ -51,23 +17,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-3"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-render-the-generated-wallpaper-images-white-plaid-lace-dim-1280x720-jpg-and-dark-stussy-grunge-dim-1280x720-jpg-as-static-assets-placed-in-frontend-public-assets-generated-so-they-can-be-referenced-by-the-personalization-hook-and-components",
-      "featureTitle": "Render the generated wallpaper images (white-plaid-lace.dim_1280x720.jpg and dark-stussy-grunge.dim_1280x720.jpg) as static assets placed in frontend/public/assets/generated so they can be referenced by the personalization hook and components.",
-      "files": [],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-4"
+        "REQ-1"
       ],
       "confidence": "high"
     }

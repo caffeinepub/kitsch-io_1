@@ -1,41 +1,21 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "A fun entertainment app for gaming, watching movies, and listening to music. Features a wallpaper collection that users can browse and select as backgrounds.",
-  "architectural_notes": [],
+  "summary": "A no-login-required entertainment hub website with three main pages: Games, Movies (500K+), and Music (100M+ songs). Features include no sign-in required, background/wallpaper switcher widget with multiple options, and various widgets per page.",
+  "architectural_notes": [
+    "Three separate pages: Games, Movies, and Music — each with its own dedicated layout",
+    "No authentication or sign-in required anywhere on the site",
+    "Real content (songs/movies) requires third-party API integrations; build full UI/UX framework and integrate free/open APIs where possible"
+  ],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Light gray diagonal plaid pattern with black lace trim along the bottom edge, clean and delicate textile aesthetic (white-plaid-lace.dim_1280x720.jpg)\n- High-contrast black background with large off-white Stussy graffiti-style logo text on the left and a close-up of bared teeth on the right, grungy streetwear aesthetic (dark-stussy-grunge.dim_1280x720.jpg)",
+  "imageRequirements": "## Required Images\n- White diagonal plaid pattern on light grey/white background with black lace trim along the bottom edge and a small black treble clef icon in the upper right corner (wallpaper-white-plaid-lace.dim_1280x720.png)\n- Pale pink background covered in evenly spaced small black polka dots, with wide black floral lace bands along the top and bottom edges (wallpaper-pink-polka-dot-lace.dim_1280x720.png)\n- Black background with a Union Jack flag shape filled entirely with black-and-white snow leopard fur print (wallpaper-leopard-union-jack.dim_1280x720.png)\n- Dark brown quilted diamond-pattern leather texture on top and bottom thirds, with a centre band of high-contrast black-and-white zebra print stripes and a silver fleur-de-lis emblem overlaid on the lower left (wallpaper-zebra-quilted.dim_1280x720.png)\n- White background collage blending black floral lace overlay on the left, soft blurred snow leopard fur in the centre, and black baroque scrollwork illustration on the lower right (wallpaper-mixed-lace-leopard.dim_1280x720.png)\n- Pure black background with a white-outlined cartoon Domo-kun character (boxy brown monster with jagged open mouth and round white eyes) standing in the left half, waving one arm (wallpaper-domo-black.dim_1280x720.png)\n- Pure black background with a pair of large, symmetrical metallic silver feathered angel wings spread wide and centred, rendered with high-detail shiny feathers (wallpaper-silver-wings.dim_1280x720.png)\n- Distressed grunge texture combining horizontal paint-smear streaks in black, white, and raw umber with overlapping leopard/cheetah spot prints in dark brown and tan tones (wallpaper-dark-stussy-grunge.dim_1280x720.png)\n- Close-up macro of dark charcoal and black cheetah fur, showing large irregular black spots on a deep grey background with visible fine fur texture (wallpaper-dark-cheetah.dim_1280x720.png)\n- Dense all-over black floral lace pattern — large roses and leaf motifs rendered in black net lace — on an off-white/cream background (wallpaper-black-floral-lace.dim_1280x720.png)",
   "existing_features": [
     {
-      "id": "feature-add-two-new-wallpaper-options-white-plaid-lace-and-dark-stussy-grunge-to-the-usepersonalization-hook-s-texture-options-map-pointing-to-their-respective-generated-image-assets-in-frontend-public-assets-generated",
-      "title": "Add two new wallpaper options — 'White Plaid Lace' and 'Dark Stussy Grunge' — to the usePersonalization hook's texture options map, pointing to their respective generated image assets in frontend/public/assets/generated.",
+      "id": "feature-add-the-following-10-uploaded-images-as-new-selectable-wallpaper-options-in-the-personalizationpanel-and-personalization-page-alongside-the-existing-wallpaper-choices-each-option-should-display-a-thumbnail-and-a-label-the-new-wallpapers-are-1-white-plaid-with-lace-trim-2-pink-polka-dot-with-black-lace-border-3-leopard-union-jack-black-white-4-zebra-print-with-quilted-leather-fleur-de-lis-5-mixed-lace-leopard-scrollwork-6-domo-black-7-silver-angel-wings-8-dark-stussy-grunge-leopard-9-dark-cheetah-fur-10-black-floral-lace-all-images-must-be-served-as-static-assets-from-frontend-public-assets-generated-and-referenced-in-the-usepersonalization-hook-s-wallpaper-list",
+      "title": "Add the following 10 uploaded images as new selectable wallpaper options in the PersonalizationPanel and Personalization page, alongside the existing wallpaper choices. Each option should display a thumbnail and a label. The new wallpapers are: (1) White Plaid with Lace Trim, (2) Pink Polka Dot with Black Lace Border, (3) Leopard Union Jack (black & white), (4) Zebra Print with Quilted Leather & Fleur-de-lis, (5) Mixed Lace Leopard Scrollwork, (6) Domo Black, (7) Silver Angel Wings, (8) Dark Stussy Grunge Leopard, (9) Dark Cheetah Fur, (10) Black Floral Lace. All images must be served as static assets from frontend/public/assets/generated and referenced in the usePersonalization hook's wallpaper list.",
       "reqIds": [
         "REQ-1"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-white-plaid-lace-and-dark-stussy-grunge-as-selectable-thumbnail-options-in-the-personalizationpanel-component-alongside-the-existing-wallpaper-thumbnails-maintaining-the-existing-4-column-grid-layout",
-      "title": "Add 'White Plaid Lace' and 'Dark Stussy Grunge' as selectable thumbnail options in the PersonalizationPanel component alongside the existing wallpaper thumbnails, maintaining the existing 4-column grid layout.",
-      "reqIds": [
-        "REQ-2"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-white-plaid-lace-and-dark-stussy-grunge-as-selectable-options-in-the-personalization-page-frontend-src-pages-personalization-tsx-displaying-their-thumbnails-in-the-existing-grid-alongside-current-options",
-      "title": "Add 'White Plaid Lace' and 'Dark Stussy Grunge' as selectable options in the Personalization page (frontend/src/pages/Personalization.tsx), displaying their thumbnails in the existing grid alongside current options.",
-      "reqIds": [
-        "REQ-3"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-render-the-generated-wallpaper-images-white-plaid-lace-dim-1280x720-jpg-and-dark-stussy-grunge-dim-1280x720-jpg-as-static-assets-placed-in-frontend-public-assets-generated-so-they-can-be-referenced-by-the-personalization-hook-and-components",
-      "title": "Render the generated wallpaper images (white-plaid-lace.dim_1280x720.jpg and dark-stussy-grunge.dim_1280x720.jpg) as static assets placed in frontend/public/assets/generated so they can be referenced by the personalization hook and components.",
-      "reqIds": [
-        "REQ-4"
       ],
       "version": 1
     }
@@ -43,13 +23,43 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Add White Plaid Lace and Dark Stussy Grunge wallpapers to existing wallpaper collection",
+      "summary": "Games page with a large collection of playable games",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Movies page with 500,000+ movies to watch",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Music page with 100 million+ songs to listen to",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "No login/sign-in required for the website",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Background/wallpaper switcher widget with multiple themed options (plaid with lace, pink polka dot with lace, leopard Union Jack, zebra print, mixed lace/leopard/scrollwork, plus new wallpapers from latest message)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Widgets on each page (e.g., now-playing for music, currently watching for movies)",
       "reqIds": [],
       "status": "pending"
     }
   ],
   "gameProjectType": "none",
-  "projectName": "KitschHub",
+  "projectName": "Entertainment Hub",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }
