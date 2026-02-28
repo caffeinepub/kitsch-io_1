@@ -1,10 +1,10 @@
 # Specification
 
 ## Summary
-**Goal:** Trim the wallpaper list by removing 'dark stussy grunge' and all entries after it, and set 'Cheetah B and W' as the default background for new visitors.
+**Goal:** Replace the existing widget on the Home page with a static Angel aesthetics image.
 
 **Planned changes:**
-- In `usePersonalization.ts` and `PersonalizationPanel.tsx`, remove the 'dark stussy grunge' wallpaper entry and every wallpaper that appears after it in the list.
-- Set 'Cheetah B and W' as the default wallpaper in `usePersonalization.ts` so it is used when no localStorage preference exists.
+- Generate an Angel aesthetics image (pure black background, white cursive/script "Angel" text with a pixelated lo-fi look) and save it as `angel-aesthetics.png`
+- Remove the current widget from the Home page and replace it with the new Angel aesthetics image in the same position and layout space
 
-**User-visible outcome:** New visitors see the 'Cheetah B and W' wallpaper on first load, and the PersonalizationPanel no longer shows 'dark stussy grunge' or any wallpapers that previously followed it.
+**User-visible outcome:** The Home page widget is replaced by the Angel aesthetics image, displayed in the same location with no layout changes to surrounding elements.

@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-28T22:17:14.869Z",
+  "generatedAt": "2026-02-28T22:24:24.542Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -12,26 +12,24 @@
     "items": [
       {
         "id": "REQ-1",
-        "summary": "In the wallpaper list defined in usePersonalization.ts and PersonalizationPanel.tsx, find the entry named 'dark stussy grunge', remove it, and remove every wallpaper entry that appears after it in the list.",
+        "summary": "Generate an Angel aesthetics image — pure black background with white cursive/script 'Angel' text in a pixelated/lo-fi style matching the uploaded reference image — and save it as a static asset.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/hooks/usePersonalization.ts",
-          "frontend/src/components/PersonalizationPanel.tsx"
+          "frontend/public/assets/generated/angel-aesthetics.dim_760x428.png"
         ],
         "matchedFiles": [
-          "frontend/src/hooks/usePersonalization.ts",
-          "frontend/src/components/PersonalizationPanel.tsx"
+          "frontend/public/assets/generated/angel-aesthetics.dim_760x428.png"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Set 'Cheetah B and W' as the default background in usePersonalization.ts so that new visitors (with no localStorage preference saved) see the 'Cheetah B and W' wallpaper applied on first load.",
+        "summary": "Replace the existing widget on the Home page with a static image widget displaying the generated Angel aesthetics image (angel-aesthetics.png). The new widget must occupy the exact same position and layout space as the widget it replaces.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/hooks/usePersonalization.ts"
+          "frontend/src/pages/Home.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/hooks/usePersonalization.ts"
+          "frontend/src/pages/Home.tsx"
         ]
       }
     ]
@@ -41,9 +39,8 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/components/PersonalizationPanel.tsx",
-    "frontend/src/hooks/usePersonalization.ts",
-    "frontend/src/pages/Personalization.tsx",
+    "frontend/public/assets/generated/angel-aesthetics.dim_760x428.png",
+    "frontend/src/pages/Home.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

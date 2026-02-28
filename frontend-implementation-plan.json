@@ -1,41 +1,39 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Remove wallpapers from 'dark stussy grunge' onward and set 'Cheetah B and W' as default",
+  "title": "Replace current widget with Angel aesthetics image",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Remove 'dark stussy grunge' wallpaper and all wallpapers that appear after it in the list",
+      "summary": "Generate an Angel aesthetics image with pure black background and white cursive 'Angel' text in pixelated lo-fi style and save as a static asset",
       "acceptanceCriteria": [
-        "The wallpaper 'dark stussy grunge' no longer appears in the PersonalizationPanel grid.",
-        "All wallpapers that were listed after 'dark stussy grunge' no longer appear in the PersonalizationPanel grid.",
-        "Wallpapers listed before 'dark stussy grunge' remain unchanged."
+        "Image has a solid black background",
+        "White cursive/script 'Angel' text is centered on the image",
+        "Text has a pixelated/lo-fi aesthetic matching the uploaded reference",
+        "Image is saved to frontend/public/assets/generated/angel-aesthetics.png"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/hooks/usePersonalization.ts",
-          "operation": "modify",
-          "description": "In the validTextures array, locate the entry for 'dark stussy grunge' and remove it along with every wallpaper entry that follows it in the array. Preserve all wallpaper entries that appear before 'dark stussy grunge' in the original order."
-        },
-        {
-          "path": "frontend/src/components/PersonalizationPanel.tsx",
-          "operation": "modify",
-          "description": "In the wallpapers array constant, locate the entry with label 'dark stussy grunge' and remove it along with every wallpaper object that follows it in the array. Keep all wallpaper objects that appear before 'dark stussy grunge' unchanged."
+          "path": "frontend/public/assets/generated/angel-aesthetics.dim_760x428.png",
+          "operation": "create",
+          "description": "Save the generated Angel aesthetics image with pure black background and white pixelated cursive 'Angel' text to the frontend assets directory at frontend/public/assets/generated/angel-aesthetics.dim_760x428.png"
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Set 'Cheetah B and W' as the default background wallpaper for new visitors",
+      "summary": "Replace the existing widget on the Home page with a static image widget displaying the Angel aesthetics image in the same position",
       "acceptanceCriteria": [
-        "When localStorage contains no saved background preference, the app renders with the 'Cheetah B and W' wallpaper active.",
-        "The 'Cheetah B and W' option is highlighted/selected by default in the PersonalizationPanel when no prior selection exists."
+        "The previous widget is removed from the Home page",
+        "The Angel aesthetics image is displayed in the same position as the removed widget",
+        "The image renders at an appropriate size consistent with the original widget's footprint",
+        "No layout shifts or broken spacing occur around the widget area"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/hooks/usePersonalization.ts",
+          "path": "frontend/src/pages/Home.tsx",
           "operation": "modify",
-          "description": "Change the default background value in the useState initialization from its current value to 'cheetah-bw' (or the exact texture key used for 'Cheetah B and W' in the validTextures array). This ensures that when no localStorage preference exists, the hook returns 'Cheetah B and W' as the active background."
+          "description": "Replace the existing widget component with an img element that displays the generated Angel aesthetics image from frontend/public/assets/generated/angel-aesthetics.dim_760x428.png. Maintain the same layout position and dimensions as the removed widget to prevent any layout shifts. Ensure the image is properly sized and positioned to match the original widget's footprint."
         }
       ]
     }

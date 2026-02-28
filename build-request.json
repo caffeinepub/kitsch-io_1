@@ -1,11 +1,11 @@
 {
   "kind": "build_request",
-  "title": "Remove wallpapers from 'dark stussy grunge' onward and set 'Cheetah B and W' as default",
+  "title": "Replace current widget with Angel aesthetics image",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "In the wallpaper list defined in usePersonalization.ts and PersonalizationPanel.tsx, find the entry named 'dark stussy grunge', remove it, and remove every wallpaper entry that appears after it in the list.",
+      "text": "Generate an Angel aesthetics image — pure black background with white cursive/script 'Angel' text in a pixelated/lo-fi style matching the uploaded reference image — and save it as a static asset.",
       "target": "frontend",
       "source": {
         "messageIds": [
@@ -13,45 +13,52 @@
           "msg-5"
         ],
         "quotes": [
-          "delete any wallpaper from dark stussy grunge",
-          "delete it along with every wallpaper that comes after it in the list"
+          "the widget that's there change it to this pic",
+          "same position as the widget right now"
         ]
       },
       "acceptanceCriteria": [
-        "The wallpaper 'dark stussy grunge' no longer appears in the PersonalizationPanel grid.",
-        "All wallpapers that were listed after 'dark stussy grunge' no longer appear in the PersonalizationPanel grid.",
-        "Wallpapers listed before 'dark stussy grunge' remain unchanged."
+        "Image has a solid black background",
+        "White cursive/script 'Angel' text is centered on the image",
+        "Text has a pixelated/lo-fi aesthetic matching the uploaded reference",
+        "Image is saved to frontend/public/assets/generated/angel-aesthetics.png"
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Set 'Cheetah B and W' as the default background in usePersonalization.ts so that new visitors (with no localStorage preference saved) see the 'Cheetah B and W' wallpaper applied on first load.",
+      "text": "Replace the existing widget on the Home page with a static image widget displaying the generated Angel aesthetics image (angel-aesthetics.png). The new widget must occupy the exact same position and layout space as the widget it replaces.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-6"
+          "msg-4",
+          "msg-5"
         ],
         "quotes": [
-          "make the default background cheetah B and W"
+          "the widget that's there change it to this pic",
+          "same position as the widget right now"
         ]
       },
       "acceptanceCriteria": [
-        "When localStorage contains no saved background preference, the app renders with the 'Cheetah B and W' wallpaper active.",
-        "The 'Cheetah B and W' option is highlighted/selected by default in the PersonalizationPanel when no prior selection exists."
+        "The previous widget is removed from the Home page",
+        "The Angel aesthetics image is displayed in the same position as the removed widget",
+        "The image renders at an appropriate size consistent with the original widget's footprint",
+        "No layout shifts or broken spacing occur around the widget area"
       ]
     }
   ],
   "constraints": [
-    "Do not remove any wallpapers that appear before 'dark stussy grunge' in the list.",
-    "Do not alter the backend schema or any Motoko files."
+    "Do not change the position or layout of other widgets on the Home page",
+    "Do not modify any backend logic"
   ],
   "nonGoals": [
-    "Adding new wallpaper options.",
-    "Changing the UI layout of the PersonalizationPanel.",
-    "Modifying any other personalization settings (e.g., overlay opacity)."
+    "Changing other pages or widgets",
+    "Making the Angel image interactive or clickable",
+    "Modifying wallpaper or background settings"
   ],
   "imageRequirements": {
-    "required": [],
+    "required": [
+      "Pure black background with white cursive script 'Angel' text in a pixelated lo-fi aesthetic, centered composition (angel-aesthetics.dim_760x428.png)"
+    ],
     "edits": []
   }
 }

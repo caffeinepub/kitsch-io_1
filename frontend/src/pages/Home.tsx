@@ -49,22 +49,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Hero Banner */}
+      {/* Angel Aesthetics Widget */}
       <section className="max-w-7xl mx-auto px-4 mb-12">
         <div className="relative overflow-hidden border border-silver/20 h-48 md:h-64">
           <img
-            src="/assets/generated/hero-banner.dim_1440x600.png"
-            alt="KitschHub Banner"
-            className="w-full h-full object-cover opacity-60"
-            onError={e => {
-              (e.target as HTMLImageElement).style.display = 'none';
-            }}
+            src="/assets/angel _ aesthetics.jpeg"
+            alt="Angel"
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <p className="font-display text-3xl md:text-5xl font-black uppercase tracking-widest text-white drop-shadow-lg">
-              ★ Play · Watch · Listen ★
-            </p>
-          </div>
         </div>
       </section>
 

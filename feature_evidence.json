@@ -2,12 +2,9 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-in-the-wallpaper-list-defined-in-usepersonalization-ts-and-personalizationpanel-tsx-find-the-entry-named-dark-stussy-grunge-remove-it-and-remove-every-wallpaper-entry-that-appears-after-it-in-the-list",
-      "featureTitle": "In the wallpaper list defined in usePersonalization.ts and PersonalizationPanel.tsx, find the entry named 'dark stussy grunge', remove it, and remove every wallpaper entry that appears after it in the list.",
-      "files": [
-        "frontend/src/components/PersonalizationPanel.tsx",
-        "frontend/src/hooks/usePersonalization.ts"
-      ],
+      "featureId": "feature-generate-an-angel-aesthetics-image-pure-black-background-with-white-cursive-script-angel-text-in-a-pixelated-lo-fi-style-matching-the-uploaded-reference-image-and-save-it-as-a-static-asset",
+      "featureTitle": "Generate an Angel aesthetics image — pure black background with white cursive/script 'Angel' text in a pixelated/lo-fi style matching the uploaded reference image — and save it as a static asset.",
+      "files": [],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
@@ -21,10 +18,10 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-set-cheetah-b-and-w-as-the-default-background-in-usepersonalization-ts-so-that-new-visitors-with-no-localstorage-preference-saved-see-the-cheetah-b-and-w-wallpaper-applied-on-first-load",
-      "featureTitle": "Set 'Cheetah B and W' as the default background in usePersonalization.ts so that new visitors (with no localStorage preference saved) see the 'Cheetah B and W' wallpaper applied on first load.",
+      "featureId": "feature-replace-the-existing-widget-on-the-home-page-with-a-static-image-widget-displaying-the-generated-angel-aesthetics-image-angel-aesthetics-png-the-new-widget-must-occupy-the-exact-same-position-and-layout-space-as-the-widget-it-replaces",
+      "featureTitle": "Replace the existing widget on the Home page with a static image widget displaying the generated Angel aesthetics image (angel-aesthetics.png). The new widget must occupy the exact same position and layout space as the widget it replaces.",
       "files": [
-        "frontend/src/hooks/usePersonalization.ts"
+        "frontend/src/pages/Home.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",

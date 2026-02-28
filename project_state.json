@@ -1,24 +1,23 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Entertainment hub web app with a background switcher widget. User manages wallpaper options and default backgrounds.",
-  "architectural_notes": [
-    "Background switcher widget allows visitors to pick wallpapers; wallpapers are ordered in a list with a configurable default."
-  ],
+  "summary": "Aesthetics/style site with dark grunge theme. Default background is 'Cheetah B and W'. User is customizing widgets and layout elements.",
+  "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Pure black background with white cursive script 'Angel' text in a pixelated lo-fi aesthetic, centered composition (angel-aesthetics.dim_760x428.png)",
   "existing_features": [
     {
-      "id": "feature-in-the-wallpaper-list-defined-in-usepersonalization-ts-and-personalizationpanel-tsx-find-the-entry-named-dark-stussy-grunge-remove-it-and-remove-every-wallpaper-entry-that-appears-after-it-in-the-list",
-      "title": "In the wallpaper list defined in usePersonalization.ts and PersonalizationPanel.tsx, find the entry named 'dark stussy grunge', remove it, and remove every wallpaper entry that appears after it in the list.",
+      "id": "feature-generate-an-angel-aesthetics-image-pure-black-background-with-white-cursive-script-angel-text-in-a-pixelated-lo-fi-style-matching-the-uploaded-reference-image-and-save-it-as-a-static-asset",
+      "title": "Generate an Angel aesthetics image — pure black background with white cursive/script 'Angel' text in a pixelated/lo-fi style matching the uploaded reference image — and save it as a static asset.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-set-cheetah-b-and-w-as-the-default-background-in-usepersonalization-ts-so-that-new-visitors-with-no-localstorage-preference-saved-see-the-cheetah-b-and-w-wallpaper-applied-on-first-load",
-      "title": "Set 'Cheetah B and W' as the default background in usePersonalization.ts so that new visitors (with no localStorage preference saved) see the 'Cheetah B and W' wallpaper applied on first load.",
+      "id": "feature-replace-the-existing-widget-on-the-home-page-with-a-static-image-widget-displaying-the-generated-angel-aesthetics-image-angel-aesthetics-png-the-new-widget-must-occupy-the-exact-same-position-and-layout-space-as-the-widget-it-replaces",
+      "title": "Replace the existing widget on the Home page with a static image widget displaying the generated Angel aesthetics image (angel-aesthetics.png). The new widget must occupy the exact same position and layout space as the widget it replaces.",
       "reqIds": [
         "REQ-2"
       ],
@@ -27,7 +26,7 @@
   ],
   "new_feature_requests": [],
   "gameProjectType": "none",
-  "projectName": "Entertainment Hub",
+  "projectName": "Replace current widget with Angel aesthetics image",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }
