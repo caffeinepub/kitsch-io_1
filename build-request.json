@@ -1,0 +1,90 @@
+{
+  "kind": "build_request",
+  "title": "Add White Plaid Lace and Dark Stussy Grunge wallpapers to collection",
+  "projectName": "KitschHub",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Add two new wallpaper options — 'White Plaid Lace' and 'Dark Stussy Grunge' — to the usePersonalization hook's texture options map, pointing to their respective generated image assets in frontend/public/assets/generated.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ],
+        "quotes": [
+          "Add them where the other wallpapers are"
+        ]
+      },
+      "acceptanceCriteria": [
+        "usePersonalization hook includes 'whitePlaidLace' and 'darkStussyGrunge' as valid texture keys",
+        "Each key maps to the correct asset path under frontend/public/assets/generated"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Add 'White Plaid Lace' and 'Dark Stussy Grunge' as selectable thumbnail options in the PersonalizationPanel component alongside the existing wallpaper thumbnails, maintaining the existing 4-column grid layout.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ],
+        "quotes": [
+          "Add them where the other wallpapers are"
+        ]
+      },
+      "acceptanceCriteria": [
+        "PersonalizationPanel displays thumbnails for both new wallpapers",
+        "Selecting either new wallpaper applies it as the app background",
+        "Layout remains a 4-column grid consistent with existing options"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add 'White Plaid Lace' and 'Dark Stussy Grunge' as selectable options in the Personalization page (frontend/src/pages/Personalization.tsx), displaying their thumbnails in the existing grid alongside current options.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ],
+        "quotes": [
+          "Add them where the other wallpapers are"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Personalization page shows both new wallpaper thumbnails",
+        "Selecting them updates the persisted background preference"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Render the generated wallpaper images (white-plaid-lace.dim_1280x720.jpg and dark-stussy-grunge.dim_1280x720.jpg) as static assets placed in frontend/public/assets/generated so they can be referenced by the personalization hook and components.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Both image files exist under frontend/public/assets/generated",
+        "Images load correctly when applied as background in the app"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or any files under frontend/src/components/ui",
+    "New wallpaper asset filenames must match exactly what is referenced in usePersonalization hook"
+  ],
+  "nonGoals": [
+    "Adding any new app features beyond the two wallpapers",
+    "Changing existing wallpaper entries or restructuring the wallpaper grid layout",
+    "Backend changes"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Light gray diagonal plaid pattern with black lace trim along the bottom edge, clean and delicate textile aesthetic (white-plaid-lace.dim_1280x720.jpg)",
+      "High-contrast black background with large off-white Stussy graffiti-style logo text on the left and a close-up of bared teeth on the right, grungy streetwear aesthetic (dark-stussy-grunge.dim_1280x720.jpg)"
+    ],
+    "edits": []
+  }
+}

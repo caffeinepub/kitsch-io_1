@@ -1,0 +1,76 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-28T21:05:37.013Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 4,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Add two new wallpaper options — 'White Plaid Lace' and 'Dark Stussy Grunge' — to the usePersonalization hook's texture options map, pointing to their respective generated image assets in frontend/public/assets/generated.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/usePersonalization.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/usePersonalization.ts"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Add 'White Plaid Lace' and 'Dark Stussy Grunge' as selectable thumbnail options in the PersonalizationPanel component alongside the existing wallpaper thumbnails, maintaining the existing 4-column grid layout.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/PersonalizationPanel.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/PersonalizationPanel.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Add 'White Plaid Lace' and 'Dark Stussy Grunge' as selectable options in the Personalization page (frontend/src/pages/Personalization.tsx), displaying their thumbnails in the existing grid alongside current options.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Personalization.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Personalization.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Render the generated wallpaper images (white-plaid-lace.dim_1280x720.jpg and dark-stussy-grunge.dim_1280x720.jpg) as static assets placed in frontend/public/assets/generated so they can be referenced by the personalization hook and components.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/white-plaid-lace.dim_1280x720.jpg",
+          "frontend/public/assets/generated/dark-stussy-grunge.dim_1280x720.jpg"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/white-plaid-lace.dim_1280x720.jpg",
+          "frontend/public/assets/generated/dark-stussy-grunge.dim_1280x720.jpg"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/public/assets/generated/dark-stussy-grunge.dim_1280x720.jpg",
+    "frontend/public/assets/generated/white-plaid-lace.dim_1280x720.jpg",
+    "frontend/src/components/PersonalizationPanel.tsx",
+    "frontend/src/hooks/usePersonalization.ts",
+    "frontend/src/pages/Personalization.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add White Plaid Lace and Dark Stussy Grunge wallpapers to collection",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Add 'whitePlaidLace' and 'darkStussyGrunge' texture keys to usePersonalization hook's texture options map",
+      "acceptanceCriteria": [
+        "usePersonalization hook includes 'whitePlaidLace' and 'darkStussyGrunge' as valid texture keys",
+        "Each key maps to the correct asset path under frontend/public/assets/generated"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/usePersonalization.ts",
+          "operation": "modify",
+          "description": "Add two new entries to the texture options map: 'whitePlaidLace' pointing to '/assets/generated/white-plaid-lace.dim_1280x720.jpg' and 'darkStussyGrunge' pointing to '/assets/generated/dark-stussy-grunge.dim_1280x720.jpg', maintaining consistency with existing texture key naming and URL format"
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add White Plaid Lace and Dark Stussy Grunge thumbnail options to PersonalizationPanel component",
+      "acceptanceCriteria": [
+        "PersonalizationPanel displays thumbnails for both new wallpapers",
+        "Selecting either new wallpaper applies it as the app background",
+        "Layout remains a 4-column grid consistent with existing options"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PersonalizationPanel.tsx",
+          "operation": "modify",
+          "description": "Add two new wallpaper thumbnail buttons in the grid: one for 'whitePlaidLace' using frontend/public/assets/generated/white-plaid-lace.dim_1280x720.jpg and one for 'darkStussyGrunge' using frontend/public/assets/generated/dark-stussy-grunge.dim_1280x720.jpg, positioned after the existing 8 wallpaper options and maintaining the 4-column responsive grid layout with proper onClick handlers to set the texture"
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add White Plaid Lace and Dark Stussy Grunge selectable options to Personalization page",
+      "acceptanceCriteria": [
+        "Personalization page shows both new wallpaper thumbnails",
+        "Selecting them updates the persisted background preference"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Personalization.tsx",
+          "operation": "modify",
+          "description": "Add two new wallpaper thumbnail buttons to the texture selection grid: one for 'whitePlaidLace' using frontend/public/assets/generated/white-plaid-lace.dim_1280x720.jpg and one for 'darkStussyGrunge' using frontend/public/assets/generated/dark-stussy-grunge.dim_1280x720.jpg, positioned after the existing 8 options and maintaining consistent thumbnail styling with active state indicators and onClick handlers"
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Wire generated wallpaper images as static frontend assets",
+      "acceptanceCriteria": [
+        "Both image files exist under frontend/public/assets/generated",
+        "Images load correctly when applied as background in the app"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/white-plaid-lace.dim_1280x720.jpg",
+          "operation": "create",
+          "description": "Place the generated white plaid lace wallpaper image (light gray diagonal plaid pattern with black lace trim along the bottom edge, clean and delicate textile aesthetic) as a static asset at this path so it can be referenced by the personalization hook and components"
+        },
+        {
+          "path": "frontend/public/assets/generated/dark-stussy-grunge.dim_1280x720.jpg",
+          "operation": "create",
+          "description": "Place the generated dark Stussy grunge wallpaper image (high-contrast black background with large off-white Stussy graffiti-style logo text on the left and a close-up of bared teeth on the right, grungy streetwear aesthetic) as a static asset at this path so it can be referenced by the personalization hook and components"
+        }
+      ]
+    }
+  ]
+}
