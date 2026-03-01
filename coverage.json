@@ -1,63 +1,161 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-03-01T00:57:24.919Z",
+  "generatedAt": "2026-03-01T02:30:39.084Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 3,
-    "implemented": 3,
+    "total": 6,
+    "implemented": 5,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Rewrite the music API service to use the Jamendo public API with a correct, CORS-friendly endpoint (e.g., https://api.jamendo.com/v3.0/tracks/ with client_id param) and proper query parameters so it reliably returns tracks. Ensure the fetch includes required fields: id, name, artist_name, audio (streaming URL), album_image, genre tags. Remove any FMA (Free Music Archive) dependency as it is unreliable.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/services/musicApiService.ts"
-        ],
-        "matchedFiles": [
-          "frontend/src/services/musicApiService.ts"
-        ]
+        "summary": "Remove all music-related backend state and functions from backend/main.mo: delete song favorites storage, all song favorites query/update/delete methods, and any music-specific types or imports. Keep user profile management and URL favorites intact.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
       },
       {
         "id": "REQ-2",
-        "summary": "Add a curated set of at least 20 hardcoded fallback tracks with verified public-domain or royalty-free streaming URLs (Internet Archive audio URLs are acceptable). When the Jamendo API call fails, returns an empty result, or throws an error, the music service must return these fallback tracks instead of an empty array.",
+        "summary": "Delete or fully gut all music-related frontend pages: Music.tsx, Playlists.tsx, PlaylistDetail.tsx, Favorites.tsx (song-favorites version), AlbumDetail.tsx, ArtistDetail.tsx. Replace any removed pages with a simple placeholder or redirect so the router does not break.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/data/fallbackMusic.ts",
-          "frontend/src/services/musicApiService.ts"
+          "frontend/src/pages/Music.tsx",
+          "frontend/src/pages/Playlists.tsx",
+          "frontend/src/pages/PlaylistDetail.tsx",
+          "frontend/src/pages/Favorites.tsx",
+          "frontend/src/pages/AlbumDetail.tsx",
+          "frontend/src/pages/ArtistDetail.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/data/fallbackMusic.ts",
-          "frontend/src/services/musicApiService.ts"
+          "frontend/src/pages/Music.tsx",
+          "frontend/src/pages/Playlists.tsx",
+          "frontend/src/pages/PlaylistDetail.tsx",
+          "frontend/src/pages/Favorites.tsx",
+          "frontend/src/pages/AlbumDetail.tsx",
+          "frontend/src/pages/ArtistDetail.tsx"
         ]
       },
       {
         "id": "REQ-3",
-        "summary": "Update the useMusicSearch hook and Music page to handle the case where the API service returns an empty result by immediately rendering the fallback tracks rather than displaying an empty state or error message. The loading state should resolve correctly whether data comes from Jamendo or the fallback.",
+        "summary": "Remove all music-related components: MusicPlayer.tsx, SongCard.tsx, TrackCard.tsx, AddToPlaylistModal.tsx, and MusicTickerWidget.tsx. Remove MusicPlayerProvider and MusicPlayerContext.tsx. Remove any persistent MusicPlayer rendered in App.tsx.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/hooks/useMusicSearch.ts",
-          "frontend/src/pages/Music.tsx"
+          "frontend/src/components/MusicPlayer.tsx",
+          "frontend/src/components/SongCard.tsx",
+          "frontend/src/components/TrackCard.tsx",
+          "frontend/src/components/AddToPlaylistModal.tsx",
+          "frontend/src/components/widgets/MusicTickerWidget.tsx",
+          "frontend/src/contexts/MusicPlayerContext.tsx"
         ],
         "matchedFiles": [
+          "frontend/src/components/MusicPlayer.tsx",
+          "frontend/src/components/SongCard.tsx",
+          "frontend/src/components/TrackCard.tsx",
+          "frontend/src/components/AddToPlaylistModal.tsx",
+          "frontend/src/components/widgets/MusicTickerWidget.tsx",
+          "frontend/src/contexts/MusicPlayerContext.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Delete all music-related services and hooks: musicApiService.ts, spotifyService.ts, youtubeService.ts, soundcloudService.ts, useMusicSearch.ts, usePlaylists.ts, useSongFavorites.ts, and the music-related parts of useQueries.ts (song favorites queries/mutations).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/services/musicApiService.ts",
+          "frontend/src/services/spotifyService.ts",
+          "frontend/src/services/youtubeService.ts",
+          "frontend/src/services/soundcloudService.ts",
           "frontend/src/hooks/useMusicSearch.ts",
-          "frontend/src/pages/Music.tsx"
+          "frontend/src/hooks/usePlaylists.ts",
+          "frontend/src/hooks/useSongFavorites.ts",
+          "frontend/src/hooks/useQueries.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/services/musicApiService.ts",
+          "frontend/src/services/spotifyService.ts",
+          "frontend/src/services/youtubeService.ts",
+          "frontend/src/services/soundcloudService.ts",
+          "frontend/src/hooks/useMusicSearch.ts",
+          "frontend/src/hooks/usePlaylists.ts",
+          "frontend/src/hooks/useSongFavorites.ts",
+          "frontend/src/hooks/useQueries.ts"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Delete all music-related data files: music.ts, generatedMusic.ts, fallbackMusic.ts. Delete frontend/src/types/music.ts (Song, Playlist interfaces).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/data/music.ts",
+          "frontend/src/data/generatedMusic.ts",
+          "frontend/src/data/fallbackMusic.ts",
+          "frontend/src/types/music.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/data/music.ts",
+          "frontend/src/data/generatedMusic.ts",
+          "frontend/src/data/fallbackMusic.ts",
+          "frontend/src/types/music.ts"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Update App.tsx to remove all music-related route definitions (music, playlists, playlist detail, artist detail, album detail), remove MusicPlayerProvider wrapper, and remove the persistent MusicPlayer component. Update Layout.tsx to remove navigation links to music pages. Update Home.tsx to remove the Music section navigation card.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/pages/Home.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/pages/Home.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
+    "backend/main.mo",
+    "backend/migration.mo",
     "build-request.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/AddToPlaylistModal.tsx",
+    "frontend/src/components/Layout.tsx",
+    "frontend/src/components/MusicPlayer.tsx",
+    "frontend/src/components/SongCard.tsx",
+    "frontend/src/components/TrackCard.tsx",
+    "frontend/src/components/widgets/MusicTickerWidget.tsx",
+    "frontend/src/contexts/MusicPlayerContext.tsx",
     "frontend/src/data/fallbackMusic.ts",
+    "frontend/src/data/generatedMusic.ts",
+    "frontend/src/data/music.ts",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
     "frontend/src/hooks/useMusicSearch.ts",
+    "frontend/src/hooks/usePlaylists.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/hooks/useSongFavorites.ts",
+    "frontend/src/pages/AlbumDetail.tsx",
+    "frontend/src/pages/ArtistDetail.tsx",
+    "frontend/src/pages/Favorites.tsx",
+    "frontend/src/pages/Home.tsx",
     "frontend/src/pages/Music.tsx",
+    "frontend/src/pages/PlaylistDetail.tsx",
+    "frontend/src/pages/Playlists.tsx",
     "frontend/src/services/musicApiService.ts",
+    "frontend/src/services/soundcloudService.ts",
+    "frontend/src/services/spotifyService.ts",
+    "frontend/src/services/youtubeService.ts",
+    "frontend/src/types/music.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

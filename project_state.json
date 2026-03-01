@@ -1,41 +1,70 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Music streaming project with Jamendo + Free Music Archive integration, search, favorites, and playlists. Recurring issue with tracks not loading.",
-  "architectural_notes": [
-    "Music section uses Jamendo API + Free Music Archive; must include hardcoded fallback tracks in case APIs fail or return empty results"
-  ],
+  "summary": "Project previously had Spotify, YouTube, and SoundCloud music integrations. User wants all music-related features removed entirely, leaving a clean slate.",
+  "architectural_notes": [],
   "known_issues": [
-    "'No tracks available' error shown repeatedly — Jamendo/FMA APIs returning empty or failing; fix by using CORS-friendly endpoints and curated fallback tracks"
+    "AI repeatedly failed to execute the music removal request — may need to break the task into smaller steps"
   ],
-  "isFixRequest": true,
+  "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-rewrite-the-music-api-service-to-use-the-jamendo-public-api-with-a-correct-cors-friendly-endpoint-e-g-https-api-jamendo-com-v3-0-tracks-with-client-id-param-and-proper-query-parameters-so-it-reliably-returns-tracks-ensure-the-fetch-includes-required-fields-id-name-artist-name-audio-streaming-url-album-image-genre-tags-remove-any-fma-free-music-archive-dependency-as-it-is-unreliable",
-      "title": "Rewrite the music API service to use the Jamendo public API with a correct, CORS-friendly endpoint (e.g., https://api.jamendo.com/v3.0/tracks/ with client_id param) and proper query parameters so it reliably returns tracks. Ensure the fetch includes required fields: id, name, artist_name, audio (streaming URL), album_image, genre tags. Remove any FMA (Free Music Archive) dependency as it is unreliable.",
-      "reqIds": [
-        "REQ-1"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-a-curated-set-of-at-least-20-hardcoded-fallback-tracks-with-verified-public-domain-or-royalty-free-streaming-urls-internet-archive-audio-urls-are-acceptable-when-the-jamendo-api-call-fails-returns-an-empty-result-or-throws-an-error-the-music-service-must-return-these-fallback-tracks-instead-of-an-empty-array",
-      "title": "Add a curated set of at least 20 hardcoded fallback tracks with verified public-domain or royalty-free streaming URLs (Internet Archive audio URLs are acceptable). When the Jamendo API call fails, returns an empty result, or throws an error, the music service must return these fallback tracks instead of an empty array.",
+      "id": "feature-delete-or-fully-gut-all-music-related-frontend-pages-music-tsx-playlists-tsx-playlistdetail-tsx-favorites-tsx-song-favorites-version-albumdetail-tsx-artistdetail-tsx-replace-any-removed-pages-with-a-simple-placeholder-or-redirect-so-the-router-does-not-break",
+      "title": "Delete or fully gut all music-related frontend pages: Music.tsx, Playlists.tsx, PlaylistDetail.tsx, Favorites.tsx (song-favorites version), AlbumDetail.tsx, ArtistDetail.tsx. Replace any removed pages with a simple placeholder or redirect so the router does not break.",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
     },
     {
-      "id": "feature-update-the-usemusicsearch-hook-and-music-page-to-handle-the-case-where-the-api-service-returns-an-empty-result-by-immediately-rendering-the-fallback-tracks-rather-than-displaying-an-empty-state-or-error-message-the-loading-state-should-resolve-correctly-whether-data-comes-from-jamendo-or-the-fallback",
-      "title": "Update the useMusicSearch hook and Music page to handle the case where the API service returns an empty result by immediately rendering the fallback tracks rather than displaying an empty state or error message. The loading state should resolve correctly whether data comes from Jamendo or the fallback.",
+      "id": "feature-remove-all-music-related-components-musicplayer-tsx-songcard-tsx-trackcard-tsx-addtoplaylistmodal-tsx-and-musictickerwidget-tsx-remove-musicplayerprovider-and-musicplayercontext-tsx-remove-any-persistent-musicplayer-rendered-in-app-tsx",
+      "title": "Remove all music-related components: MusicPlayer.tsx, SongCard.tsx, TrackCard.tsx, AddToPlaylistModal.tsx, and MusicTickerWidget.tsx. Remove MusicPlayerProvider and MusicPlayerContext.tsx. Remove any persistent MusicPlayer rendered in App.tsx.",
       "reqIds": [
         "REQ-3"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-delete-all-music-related-services-and-hooks-musicapiservice-ts-spotifyservice-ts-youtubeservice-ts-soundcloudservice-ts-usemusicsearch-ts-useplaylists-ts-usesongfavorites-ts-and-the-music-related-parts-of-usequeries-ts-song-favorites-queries-mutations",
+      "title": "Delete all music-related services and hooks: musicApiService.ts, spotifyService.ts, youtubeService.ts, soundcloudService.ts, useMusicSearch.ts, usePlaylists.ts, useSongFavorites.ts, and the music-related parts of useQueries.ts (song favorites queries/mutations).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-delete-all-music-related-data-files-music-ts-generatedmusic-ts-fallbackmusic-ts-delete-frontend-src-types-music-ts-song-playlist-interfaces",
+      "title": "Delete all music-related data files: music.ts, generatedMusic.ts, fallbackMusic.ts. Delete frontend/src/types/music.ts (Song, Playlist interfaces).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-app-tsx-to-remove-all-music-related-route-definitions-music-playlists-playlist-detail-artist-detail-album-detail-remove-musicplayerprovider-wrapper-and-remove-the-persistent-musicplayer-component-update-layout-tsx-to-remove-navigation-links-to-music-pages-update-home-tsx-to-remove-the-music-section-navigation-card",
+      "title": "Update App.tsx to remove all music-related route definitions (music, playlists, playlist detail, artist detail, album detail), remove MusicPlayerProvider wrapper, and remove the persistent MusicPlayer component. Update Layout.tsx to remove navigation links to music pages. Update Home.tsx to remove the Music section navigation card.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
     }
   ],
-  "new_feature_requests": [],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Remove all music-related features (Spotify, YouTube, SoundCloud integrations, music UI, and related code)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Remove all music-related backend state and functions from backend/main.mo: delete song favorites storage, all song favorites query/update/delete methods, and any music-specific types or imports. Keep user profile management and URL favorites intact.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    }
+  ],
   "gameProjectType": "none",
   "projectName": "Kitsch-io",
   "clarification_mode": "instant",

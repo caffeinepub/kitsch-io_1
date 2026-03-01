@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import { Gamepad2, Film, Music, ChevronRight } from 'lucide-react';
+import { Gamepad2, Film, ChevronRight } from 'lucide-react';
 
 const SECTIONS = [
   {
@@ -7,7 +7,6 @@ const SECTIONS = [
     label: 'Games',
     icon: Gamepad2,
     description: 'Play browser games — puzzles, arcade, strategy & more',
-    accent: 'from-white/10 to-white/5',
     emoji: '🎮',
   },
   {
@@ -15,16 +14,7 @@ const SECTIONS = [
     label: 'Movies',
     icon: Film,
     description: 'Watch classic & cult films — public domain cinema vault',
-    accent: 'from-white/10 to-white/5',
     emoji: '🎬',
-  },
-  {
-    to: '/music',
-    label: 'Music',
-    icon: Music,
-    description: 'Listen to tracks across every genre — play inline',
-    accent: 'from-white/10 to-white/5',
-    emoji: '🎵',
   },
 ];
 
@@ -44,7 +34,7 @@ export default function Home() {
             <span className="text-silver">Hub</span>
           </h1>
           <p className="text-silver/70 text-lg max-w-xl mx-auto font-light tracking-wide">
-            Games · Movies · Music — all in one place, styled your way.
+            Games · Movies — all in one place, styled your way.
           </p>
         </div>
       </section>
@@ -62,7 +52,7 @@ export default function Home() {
 
       {/* Main Section Cards */}
       <section className="max-w-7xl mx-auto px-4 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {SECTIONS.map(({ to, label, icon: Icon, description, emoji }) => (
             <Link
               key={to}

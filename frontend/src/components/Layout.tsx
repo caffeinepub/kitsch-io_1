@@ -1,6 +1,6 @@
 import { Outlet, Link, useLocation } from '@tanstack/react-router';
 import { useState } from 'react';
-import { Gamepad2, Film, Music, Home, Palette, Star } from 'lucide-react';
+import { Gamepad2, Film, Home, Palette, Star } from 'lucide-react';
 import { usePersonalization } from '../hooks/usePersonalization';
 import PersonalizationPanel from './PersonalizationPanel';
 
@@ -15,7 +15,6 @@ export default function Layout() {
     { to: '/', label: 'Home', icon: Home },
     { to: '/games', label: 'Games', icon: Gamepad2 },
     { to: '/movies', label: 'Movies', icon: Film },
-    { to: '/music', label: 'Music', icon: Music },
   ];
 
   return (

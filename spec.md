@@ -1,14 +1,16 @@
 # Specification
 
 ## Summary
-**Goal:** Fix the "No Tracks Available" issue on the Music page by switching to a reliable Jamendo API integration and adding hardcoded fallback tracks so music is always available.
+**Goal:** Remove all music-related features, code, and data from both the frontend and backend of the Kitsch-io app.
 
 **Planned changes:**
-- Rewrite the music API service to use the Jamendo public API (`https://api.jamendo.com/v3.0/tracks/`) with a valid `client_id` and proper query parameters, removing all FMA dependencies
-- Map Jamendo response fields (`id`, `name`, `artist_name`, `audio`, `album_image`, genre tags) to the internal Song/ApiSong interface
-- Add at least 20 hardcoded fallback tracks with verified publicly accessible streaming URLs (e.g. Internet Archive), covering at least 3 genres
-- Update the music service to return fallback tracks when Jamendo fails, returns empty, or throws an error
-- Update `useMusicSearch` hook and Music page to render fallback tracks instead of showing an empty state or error message
-- Ensure search and genre filter work over both live API results and fallback tracks
+- Delete all music-related backend state, types, and methods (song favorites storage, add/remove/get song favorites) from `backend/main.mo`, keeping user profile and URL favorites intact
+- Delete music-related frontend pages: `Music.tsx`, `Playlists.tsx`, `PlaylistDetail.tsx`, `Favorites.tsx` (song version), `AlbumDetail.tsx`, `ArtistDetail.tsx`
+- Delete music-related components: `MusicPlayer.tsx`, `SongCard.tsx`, `TrackCard.tsx`, `AddToPlaylistModal.tsx`, `MusicTickerWidget.tsx`, `MusicPlayerContext.tsx`, and `MusicPlayerProvider`
+- Delete music-related services and hooks: `musicApiService.ts`, `spotifyService.ts`, `youtubeService.ts`, `soundcloudService.ts`, `useMusicSearch.ts`, `usePlaylists.ts`, `useSongFavorites.ts`; remove song favorites logic from `useQueries.ts`
+- Delete music data and type files: `music.ts`, `generatedMusic.ts`, `fallbackMusic.ts`, `frontend/src/types/music.ts`
+- Update `App.tsx` to remove all music/playlist/artist/album routes and remove `MusicPlayerProvider` wrapper and persistent `MusicPlayer`
+- Update `Layout.tsx` to remove navigation links to music pages
+- Update `Home.tsx` to remove the Music section navigation card
 
-**User-visible outcome:** The Music page always displays tracks on load — either from Jamendo or the curated fallback list — and never shows "No tracks available" again.
+**User-visible outcome:** The app no longer has any music section, music player, or music-related navigation. All other features (Games, Movies, Anime, Dramas, user profile, URL favorites, AI assistant) remain fully functional.

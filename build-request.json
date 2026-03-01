@@ -1,78 +1,139 @@
 {
   "kind": "build_request",
-  "title": "Fix 'No Tracks Available' — Reliable Music Loading with Fallback",
+  "title": "Remove all music-related features and code",
   "projectName": "Kitsch-io",
   "priority": "high",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Rewrite the music API service to use the Jamendo public API with a correct, CORS-friendly endpoint (e.g., https://api.jamendo.com/v3.0/tracks/ with client_id param) and proper query parameters so it reliably returns tracks. Ensure the fetch includes required fields: id, name, artist_name, audio (streaming URL), album_image, genre tags. Remove any FMA (Free Music Archive) dependency as it is unreliable.",
-      "target": "frontend",
+      "text": "Remove all music-related backend state and functions from backend/main.mo: delete song favorites storage, all song favorites query/update/delete methods, and any music-specific types or imports. Keep user profile management and URL favorites intact.",
+      "target": "backend",
       "source": {
         "messageIds": [
-          "msg-4",
-          "msg-5"
+          "msg-1"
         ],
         "quotes": [
-          "it says no tracks are aveylable right now for the second time",
-          "use the Jamendo API with proper CORS-friendly endpoints and fallback handling"
+          "delete songs",
+          "delete ALL music"
         ]
       },
       "acceptanceCriteria": [
-        "The Jamendo API call includes a valid client_id and returns a non-empty tracks array in normal network conditions.",
-        "No FMA endpoints remain in the music API service.",
-        "The service correctly maps Jamendo response fields to the internal Song/ApiSong interface.",
-        "Console shows no CORS errors when the music page loads."
+        "backend/main.mo contains no song favorites stable variables",
+        "backend/main.mo contains no addSongFavorite, removeSongFavorite, getSongFavorites, or equivalent methods",
+        "User profile and URL favorites functionality is unaffected"
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Add a curated set of at least 20 hardcoded fallback tracks with verified public-domain or royalty-free streaming URLs (Internet Archive audio URLs are acceptable). When the Jamendo API call fails, returns an empty result, or throws an error, the music service must return these fallback tracks instead of an empty array.",
+      "text": "Delete or fully gut all music-related frontend pages: Music.tsx, Playlists.tsx, PlaylistDetail.tsx, Favorites.tsx (song-favorites version), AlbumDetail.tsx, ArtistDetail.tsx. Replace any removed pages with a simple placeholder or redirect so the router does not break.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-5"
+          "msg-1"
         ],
         "quotes": [
-          "add some hardcoded/curated tracks as a fallback so there's always something to play even if the API is down"
+          "delete songs",
+          "delete ALL music",
+          "remove the music"
         ]
       },
       "acceptanceCriteria": [
-        "When Jamendo returns an empty array or network error, the Music page displays the fallback tracks instead of 'No tracks available'.",
-        "Fallback tracks have valid audio URLs that can be played in an HTML audio element.",
-        "Fallback covers at least 3 different genres.",
-        "The 'No tracks available' message is never shown when fallback tracks are present."
+        "No music, playlists, album, or artist detail pages are accessible",
+        "App router does not throw errors for removed routes",
+        "Navigation links to removed pages are removed from Layout.tsx and Home.tsx"
       ]
     },
     {
       "id": "REQ-3",
-      "text": "Update the useMusicSearch hook and Music page to handle the case where the API service returns an empty result by immediately rendering the fallback tracks rather than displaying an empty state or error message. The loading state should resolve correctly whether data comes from Jamendo or the fallback.",
+      "text": "Remove all music-related components: MusicPlayer.tsx, SongCard.tsx, TrackCard.tsx, AddToPlaylistModal.tsx, and MusicTickerWidget.tsx. Remove MusicPlayerProvider and MusicPlayerContext.tsx. Remove any persistent MusicPlayer rendered in App.tsx.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "msg-1"
         ],
         "quotes": [
-          "it says no tracks are aveylable right now for the second time find a way to fix it please"
+          "delete songs",
+          "remove the music"
         ]
       },
       "acceptanceCriteria": [
-        "The Music page never displays 'No tracks available' on initial load.",
-        "Tracks (API or fallback) appear within 3 seconds of opening the Music page.",
-        "Search and genre filter work correctly over both live API results and fallback tracks.",
-        "No unhandled promise rejections appear in the console related to the music API."
+        "MusicPlayer component is no longer rendered anywhere in the app",
+        "No SongCard, TrackCard, or AddToPlaylistModal components exist",
+        "MusicPlayerContext and MusicPlayerProvider are deleted",
+        "App.tsx does not import or render any music player or music context"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Delete all music-related services and hooks: musicApiService.ts, spotifyService.ts, youtubeService.ts, soundcloudService.ts, useMusicSearch.ts, usePlaylists.ts, useSongFavorites.ts, and the music-related parts of useQueries.ts (song favorites queries/mutations).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "delete songs",
+          "delete ALL music"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No Spotify, YouTube, or SoundCloud service files exist",
+        "No musicApiService.ts exists",
+        "useMusicSearch, usePlaylists, useSongFavorites hooks are deleted",
+        "useQueries.ts retains only non-music favorites logic, with all song favorites hooks removed"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Delete all music-related data files: music.ts, generatedMusic.ts, fallbackMusic.ts. Delete frontend/src/types/music.ts (Song, Playlist interfaces).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "delete songs",
+          "delete ALL music"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No music.ts, generatedMusic.ts, or fallbackMusic.ts data files exist",
+        "frontend/src/types/music.ts is deleted",
+        "No TypeScript errors from missing music type imports remain"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Update App.tsx to remove all music-related route definitions (music, playlists, playlist detail, artist detail, album detail), remove MusicPlayerProvider wrapper, and remove the persistent MusicPlayer component. Update Layout.tsx to remove navigation links to music pages. Update Home.tsx to remove the Music section navigation card.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "delete songs",
+          "delete ALL music"
+        ]
+      },
+      "acceptanceCriteria": [
+        "App.tsx has no music, playlist, artist, or album routes",
+        "Layout.tsx navigation contains no music-related links",
+        "Home.tsx hero/nav cards contain no Music section link",
+        "App compiles and runs without errors"
       ]
     }
   ],
   "constraints": [
-    "Do not introduce any new backend changes — all fixes are frontend only.",
-    "Do not use FMA (Free Music Archive) API as it has proven unreliable.",
-    "Fallback track audio URLs must be publicly accessible without authentication."
+    "Do not remove Games, Movies, Anime, K-Drama, J-Drama, C-Drama, or any non-music features",
+    "Do not edit files listed in frontend.immutablePaths",
+    "Keep user profile management and URL favorites in the backend intact",
+    "Do not break the overall app routing or layout"
   ],
   "nonGoals": [
-    "Adding new UI features to the Music page beyond fixing track loading.",
-    "Implementing a paid or key-gated music API.",
-    "Changing the favorites or playlists functionality."
+    "Adding any new features or pages",
+    "Redesigning the visual theme",
+    "Removing movie or TV show integrations",
+    "Removing the AI assistant feature"
   ],
   "imageRequirements": {
     "required": [],
