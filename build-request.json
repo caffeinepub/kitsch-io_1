@@ -1,11 +1,12 @@
 {
   "kind": "build_request",
-  "title": "Replace current widget with Angel aesthetics image",
-  "priority": "normal",
+  "title": "Fix 'No Tracks Available' — Reliable Music Loading with Fallback",
+  "projectName": "Kitsch-io",
+  "priority": "high",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Generate an Angel aesthetics image — pure black background with white cursive/script 'Angel' text in a pixelated/lo-fi style matching the uploaded reference image — and save it as a static asset.",
+      "text": "Rewrite the music API service to use the Jamendo public API with a correct, CORS-friendly endpoint (e.g., https://api.jamendo.com/v3.0/tracks/ with client_id param) and proper query parameters so it reliably returns tracks. Ensure the fetch includes required fields: id, name, artist_name, audio (streaming URL), album_image, genre tags. Remove any FMA (Free Music Archive) dependency as it is unreliable.",
       "target": "frontend",
       "source": {
         "messageIds": [
@@ -13,52 +14,68 @@
           "msg-5"
         ],
         "quotes": [
-          "the widget that's there change it to this pic",
-          "same position as the widget right now"
+          "it says no tracks are aveylable right now for the second time",
+          "use the Jamendo API with proper CORS-friendly endpoints and fallback handling"
         ]
       },
       "acceptanceCriteria": [
-        "Image has a solid black background",
-        "White cursive/script 'Angel' text is centered on the image",
-        "Text has a pixelated/lo-fi aesthetic matching the uploaded reference",
-        "Image is saved to frontend/public/assets/generated/angel-aesthetics.png"
+        "The Jamendo API call includes a valid client_id and returns a non-empty tracks array in normal network conditions.",
+        "No FMA endpoints remain in the music API service.",
+        "The service correctly maps Jamendo response fields to the internal Song/ApiSong interface.",
+        "Console shows no CORS errors when the music page loads."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Replace the existing widget on the Home page with a static image widget displaying the generated Angel aesthetics image (angel-aesthetics.png). The new widget must occupy the exact same position and layout space as the widget it replaces.",
+      "text": "Add a curated set of at least 20 hardcoded fallback tracks with verified public-domain or royalty-free streaming URLs (Internet Archive audio URLs are acceptable). When the Jamendo API call fails, returns an empty result, or throws an error, the music service must return these fallback tracks instead of an empty array.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4",
           "msg-5"
         ],
         "quotes": [
-          "the widget that's there change it to this pic",
-          "same position as the widget right now"
+          "add some hardcoded/curated tracks as a fallback so there's always something to play even if the API is down"
         ]
       },
       "acceptanceCriteria": [
-        "The previous widget is removed from the Home page",
-        "The Angel aesthetics image is displayed in the same position as the removed widget",
-        "The image renders at an appropriate size consistent with the original widget's footprint",
-        "No layout shifts or broken spacing occur around the widget area"
+        "When Jamendo returns an empty array or network error, the Music page displays the fallback tracks instead of 'No tracks available'.",
+        "Fallback tracks have valid audio URLs that can be played in an HTML audio element.",
+        "Fallback covers at least 3 different genres.",
+        "The 'No tracks available' message is never shown when fallback tracks are present."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Update the useMusicSearch hook and Music page to handle the case where the API service returns an empty result by immediately rendering the fallback tracks rather than displaying an empty state or error message. The loading state should resolve correctly whether data comes from Jamendo or the fallback.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "it says no tracks are aveylable right now for the second time find a way to fix it please"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The Music page never displays 'No tracks available' on initial load.",
+        "Tracks (API or fallback) appear within 3 seconds of opening the Music page.",
+        "Search and genre filter work correctly over both live API results and fallback tracks.",
+        "No unhandled promise rejections appear in the console related to the music API."
       ]
     }
   ],
   "constraints": [
-    "Do not change the position or layout of other widgets on the Home page",
-    "Do not modify any backend logic"
+    "Do not introduce any new backend changes — all fixes are frontend only.",
+    "Do not use FMA (Free Music Archive) API as it has proven unreliable.",
+    "Fallback track audio URLs must be publicly accessible without authentication."
   ],
   "nonGoals": [
-    "Changing other pages or widgets",
-    "Making the Angel image interactive or clickable",
-    "Modifying wallpaper or background settings"
+    "Adding new UI features to the Music page beyond fixing track loading.",
+    "Implementing a paid or key-gated music API.",
+    "Changing the favorites or playlists functionality."
   ],
   "imageRequirements": {
-    "required": [
-      "Pure black background with white cursive script 'Angel' text in a pixelated lo-fi aesthetic, centered composition (angel-aesthetics.dim_760x428.png)"
-    ],
+    "required": [],
     "edits": []
   }
 }

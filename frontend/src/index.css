@@ -88,4 +88,9 @@
     filter: invert(1) sepia(0) saturate(0) brightness(0.8);
     border-radius: 0;
   }
+
+  /* Music player bottom bar spacing */
+  .music-player-spacer {
+    height: 80px;
+  }
 }

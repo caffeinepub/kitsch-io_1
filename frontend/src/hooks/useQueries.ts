@@ -40,3 +40,43 @@ export function useRemoveFavorite() {
     },
   });
 }
+
+export function useGetSongFavorites() {
+  const { actor, isFetching } = useActor();
+  return useQuery<Array<[string, string]>>({
+    queryKey: ['songFavorites'],
+    queryFn: async () => {
+      if (!actor) return [];
+      return actor.getSongFavorites();
+    },
+    enabled: !!actor && !isFetching,
+  });
+}
+
+export function useAddSongFavorite() {
+  const { actor } = useActor();
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async ({ songId, songLabel }: { songId: string; songLabel: string }) => {
+      if (!actor) throw new Error('Actor not initialized');
+      return actor.addSongFavorite(songId, songLabel);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['songFavorites'] });
+    },
+  });
+}
+
+export function useRemoveSongFavorite() {
+  const { actor } = useActor();
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (songId: string) => {
+      if (!actor) throw new Error('Actor not initialized');
+      return actor.removeSongFavorite(songId);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['songFavorites'] });
+    },
+  });
+}

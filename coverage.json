@@ -1,35 +1,50 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-28T22:24:24.542Z",
+  "generatedAt": "2026-03-01T00:57:24.919Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 2,
+    "total": 3,
+    "implemented": 3,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Generate an Angel aesthetics image — pure black background with white cursive/script 'Angel' text in a pixelated/lo-fi style matching the uploaded reference image — and save it as a static asset.",
+        "summary": "Rewrite the music API service to use the Jamendo public API with a correct, CORS-friendly endpoint (e.g., https://api.jamendo.com/v3.0/tracks/ with client_id param) and proper query parameters so it reliably returns tracks. Ensure the fetch includes required fields: id, name, artist_name, audio (streaming URL), album_image, genre tags. Remove any FMA (Free Music Archive) dependency as it is unreliable.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/public/assets/generated/angel-aesthetics.dim_760x428.png"
+          "frontend/src/services/musicApiService.ts"
         ],
         "matchedFiles": [
-          "frontend/public/assets/generated/angel-aesthetics.dim_760x428.png"
+          "frontend/src/services/musicApiService.ts"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Replace the existing widget on the Home page with a static image widget displaying the generated Angel aesthetics image (angel-aesthetics.png). The new widget must occupy the exact same position and layout space as the widget it replaces.",
+        "summary": "Add a curated set of at least 20 hardcoded fallback tracks with verified public-domain or royalty-free streaming URLs (Internet Archive audio URLs are acceptable). When the Jamendo API call fails, returns an empty result, or throws an error, the music service must return these fallback tracks instead of an empty array.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/Home.tsx"
+          "frontend/src/data/fallbackMusic.ts",
+          "frontend/src/services/musicApiService.ts"
         ],
         "matchedFiles": [
-          "frontend/src/pages/Home.tsx"
+          "frontend/src/data/fallbackMusic.ts",
+          "frontend/src/services/musicApiService.ts"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Update the useMusicSearch hook and Music page to handle the case where the API service returns an empty result by immediately rendering the fallback tracks rather than displaying an empty state or error message. The loading state should resolve correctly whether data comes from Jamendo or the fallback.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useMusicSearch.ts",
+          "frontend/src/pages/Music.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useMusicSearch.ts",
+          "frontend/src/pages/Music.tsx"
         ]
       }
     ]
@@ -39,8 +54,10 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/assets/generated/angel-aesthetics.dim_760x428.png",
-    "frontend/src/pages/Home.tsx",
+    "frontend/src/data/fallbackMusic.ts",
+    "frontend/src/hooks/useMusicSearch.ts",
+    "frontend/src/pages/Music.tsx",
+    "frontend/src/services/musicApiService.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

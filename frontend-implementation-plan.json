@@ -1,39 +1,66 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Replace current widget with Angel aesthetics image",
+  "title": "Fix 'No Tracks Available' — Reliable Music Loading with Fallback",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Generate an Angel aesthetics image with pure black background and white cursive 'Angel' text in pixelated lo-fi style and save as a static asset",
+      "summary": "Rewrite music API service to use Jamendo API with correct CORS-friendly endpoints and proper query parameters, removing FMA dependency",
       "acceptanceCriteria": [
-        "Image has a solid black background",
-        "White cursive/script 'Angel' text is centered on the image",
-        "Text has a pixelated/lo-fi aesthetic matching the uploaded reference",
-        "Image is saved to frontend/public/assets/generated/angel-aesthetics.png"
+        "The Jamendo API call includes a valid client_id and returns a non-empty tracks array in normal network conditions.",
+        "No FMA endpoints remain in the music API service.",
+        "The service correctly maps Jamendo response fields to the internal Song/ApiSong interface.",
+        "Console shows no CORS errors when the music page loads."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/angel-aesthetics.dim_760x428.png",
-          "operation": "create",
-          "description": "Save the generated Angel aesthetics image with pure black background and white pixelated cursive 'Angel' text to the frontend assets directory at frontend/public/assets/generated/angel-aesthetics.dim_760x428.png"
+          "path": "frontend/src/services/musicApiService.ts",
+          "operation": "modify",
+          "description": "Replace the current Jamendo API implementation with a corrected endpoint using https://api.jamendo.com/v3.0/tracks/ with proper client_id parameter. Update the fetchJamendoTracks function to include required query parameters (format=json, limit=50, include=musicinfo, audiodownload_allowed=true) and ensure the response mapping correctly extracts id, name, artist_name, audio (streaming URL from audiodownload or audio fields), album_image, and genre tags from the Jamendo v3.0 API response structure. Remove any references to FMA (Free Music Archive) endpoints and logic. Verify the API call uses the correct CORS-friendly endpoint that returns valid track data."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Replace the existing widget on the Home page with a static image widget displaying the Angel aesthetics image in the same position",
+      "summary": "Add curated fallback tracks with verified public-domain streaming URLs to ensure music is always available when the API fails",
       "acceptanceCriteria": [
-        "The previous widget is removed from the Home page",
-        "The Angel aesthetics image is displayed in the same position as the removed widget",
-        "The image renders at an appropriate size consistent with the original widget's footprint",
-        "No layout shifts or broken spacing occur around the widget area"
+        "When Jamendo returns an empty array or network error, the Music page displays the fallback tracks instead of 'No tracks available'.",
+        "Fallback tracks have valid audio URLs that can be played in an HTML audio element.",
+        "Fallback covers at least 3 different genres.",
+        "The 'No tracks available' message is never shown when fallback tracks are present."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/Home.tsx",
+          "path": "frontend/src/data/fallbackMusic.ts",
+          "operation": "create",
+          "description": "Create a new data file that exports a typed array of at least 20 curated fallback music tracks. Each track must follow the Song interface from frontend/src/types/music.ts and include verified public-domain or royalty-free streaming URLs from Internet Archive (archive.org). Ensure the fallback collection covers at least 3 different genres (e.g., classical, jazz, folk) with valid audio URLs, album artwork URLs, artist names, and metadata. These tracks will serve as the guaranteed fallback when the Jamendo API is unavailable or returns empty results."
+        },
+        {
+          "path": "frontend/src/services/musicApiService.ts",
           "operation": "modify",
-          "description": "Replace the existing widget component with an img element that displays the generated Angel aesthetics image from frontend/public/assets/generated/angel-aesthetics.dim_760x428.png. Maintain the same layout position and dimensions as the removed widget to prevent any layout shifts. Ensure the image is properly sized and positioned to match the original widget's footprint."
+          "description": "Import the fallback tracks from frontend/src/data/fallbackMusic.ts. Modify the searchSongs and getSongsByGenre functions to catch API errors and empty responses, returning the fallback tracks instead of an empty array. Ensure the fallback logic applies when Jamendo returns an empty array, throws a network error, or when the API call fails for any reason. The service should seamlessly fall back to the curated tracks so that the Music page always has content to display."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Update useMusicSearch hook and Music page to handle empty API results by rendering fallback tracks instead of showing an empty state",
+      "acceptanceCriteria": [
+        "The Music page never displays 'No tracks available' on initial load.",
+        "Tracks (API or fallback) appear within 3 seconds of opening the Music page.",
+        "Search and genre filter work correctly over both live API results and fallback tracks.",
+        "No unhandled promise rejections appear in the console related to the music API."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useMusicSearch.ts",
+          "operation": "modify",
+          "description": "Update the useMusicSearch hook to ensure it correctly handles the case where the musicApiService returns fallback tracks. Remove any logic that would display an empty state or 'No tracks available' message when the service returns a valid array (even if it's the fallback). Ensure the loading state resolves correctly whether data comes from the Jamendo API or the fallback tracks. Add error boundary handling to catch any unhandled promise rejections and log them appropriately without breaking the UI."
+        },
+        {
+          "path": "frontend/src/pages/Music.tsx",
+          "operation": "modify",
+          "description": "Update the Music page component to ensure it never displays 'No tracks available' when the useMusicSearch hook returns data (including fallback tracks). Verify that the loading state is handled correctly and that tracks (whether from Jamendo or fallback) are rendered within 3 seconds of page load. Ensure search and genre filter controls work seamlessly over both live API results and fallback tracks. Remove or conditionally hide any empty state messaging that would appear when valid track data (including fallbacks) is present."
         }
       ]
     }

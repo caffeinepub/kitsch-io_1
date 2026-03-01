@@ -1,32 +1,43 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Aesthetics/style site with dark grunge theme. Default background is 'Cheetah B and W'. User is customizing widgets and layout elements.",
-  "architectural_notes": [],
-  "known_issues": [],
-  "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Pure black background with white cursive script 'Angel' text in a pixelated lo-fi aesthetic, centered composition (angel-aesthetics.dim_760x428.png)",
+  "summary": "Music streaming project with Jamendo + Free Music Archive integration, search, favorites, and playlists. Recurring issue with tracks not loading.",
+  "architectural_notes": [
+    "Music section uses Jamendo API + Free Music Archive; must include hardcoded fallback tracks in case APIs fail or return empty results"
+  ],
+  "known_issues": [
+    "'No tracks available' error shown repeatedly — Jamendo/FMA APIs returning empty or failing; fix by using CORS-friendly endpoints and curated fallback tracks"
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
-      "id": "feature-generate-an-angel-aesthetics-image-pure-black-background-with-white-cursive-script-angel-text-in-a-pixelated-lo-fi-style-matching-the-uploaded-reference-image-and-save-it-as-a-static-asset",
-      "title": "Generate an Angel aesthetics image — pure black background with white cursive/script 'Angel' text in a pixelated/lo-fi style matching the uploaded reference image — and save it as a static asset.",
+      "id": "feature-rewrite-the-music-api-service-to-use-the-jamendo-public-api-with-a-correct-cors-friendly-endpoint-e-g-https-api-jamendo-com-v3-0-tracks-with-client-id-param-and-proper-query-parameters-so-it-reliably-returns-tracks-ensure-the-fetch-includes-required-fields-id-name-artist-name-audio-streaming-url-album-image-genre-tags-remove-any-fma-free-music-archive-dependency-as-it-is-unreliable",
+      "title": "Rewrite the music API service to use the Jamendo public API with a correct, CORS-friendly endpoint (e.g., https://api.jamendo.com/v3.0/tracks/ with client_id param) and proper query parameters so it reliably returns tracks. Ensure the fetch includes required fields: id, name, artist_name, audio (streaming URL), album_image, genre tags. Remove any FMA (Free Music Archive) dependency as it is unreliable.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-replace-the-existing-widget-on-the-home-page-with-a-static-image-widget-displaying-the-generated-angel-aesthetics-image-angel-aesthetics-png-the-new-widget-must-occupy-the-exact-same-position-and-layout-space-as-the-widget-it-replaces",
-      "title": "Replace the existing widget on the Home page with a static image widget displaying the generated Angel aesthetics image (angel-aesthetics.png). The new widget must occupy the exact same position and layout space as the widget it replaces.",
+      "id": "feature-add-a-curated-set-of-at-least-20-hardcoded-fallback-tracks-with-verified-public-domain-or-royalty-free-streaming-urls-internet-archive-audio-urls-are-acceptable-when-the-jamendo-api-call-fails-returns-an-empty-result-or-throws-an-error-the-music-service-must-return-these-fallback-tracks-instead-of-an-empty-array",
+      "title": "Add a curated set of at least 20 hardcoded fallback tracks with verified public-domain or royalty-free streaming URLs (Internet Archive audio URLs are acceptable). When the Jamendo API call fails, returns an empty result, or throws an error, the music service must return these fallback tracks instead of an empty array.",
       "reqIds": [
         "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-usemusicsearch-hook-and-music-page-to-handle-the-case-where-the-api-service-returns-an-empty-result-by-immediately-rendering-the-fallback-tracks-rather-than-displaying-an-empty-state-or-error-message-the-loading-state-should-resolve-correctly-whether-data-comes-from-jamendo-or-the-fallback",
+      "title": "Update the useMusicSearch hook and Music page to handle the case where the API service returns an empty result by immediately rendering the fallback tracks rather than displaying an empty state or error message. The loading state should resolve correctly whether data comes from Jamendo or the fallback.",
+      "reqIds": [
+        "REQ-3"
       ],
       "version": 1
     }
   ],
   "new_feature_requests": [],
   "gameProjectType": "none",
-  "projectName": "Replace current widget with Angel aesthetics image",
+  "projectName": "Kitsch-io",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }
